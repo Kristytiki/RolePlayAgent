@@ -35,6 +35,39 @@ plus a registry rehydrate.
       registry, but **does not delete the on-disk Strands session directory**.
       Add `shutil.rmtree(".sessions/session_<id>")` to the delete handler.
 
+### 4. Roll back N turns / edit-and-resend
+
+- [ ] Per-bubble "↶ rewind from here" button on bot bubbles. Clicking
+      truncates `agent.messages` back to the message before the rewound
+      one and persists the trimmed state to disk. UI drops bubbles past
+      that point. Equivalent to a tactical undo for "I didn't like that
+      reply" without nuking the whole session.
+- [ ] User-side bubble: "✎ edit" — same truncation but also re-sends the
+      edited user message, replacing the original turn with new content.
+- [ ] Backend: new endpoint `POST /chat/sessions/{id}/truncate` taking
+      `{keep_first: int}` that calls into Strands' SessionManager
+      `update_message` / `delete_message` lifecycle hooks (these already
+      exist on `FileSessionManager`).
+
+## Animated avatar — render the bot's `Action` line as motion
+
+Inspired by Andrew Ng's DeepLearning.AI short courses on AI avatars
+(e.g. "Building Talking Avatars" / Synthesia / D-ID-style talking heads),
+we already extract a structured `action` field per turn ("Raises an
+eyebrow with a flicker of curiosity"). That string is a free animation
+prompt.
+
+- [ ] Wire the parsed `action` into a small avatar component that maps
+      action keywords → Lottie / sprite frames (or kicks off a real-time
+      talking-head request with the persona portrait + the `speech`
+      audio from a TTS pass).
+- [ ] Cheaper interim: CSS-driven idle states (eyebrow tilt, lean in,
+      eyes narrow) keyed off a tiny enum the parser produces alongside
+      the free-form action text.
+- [ ] Not a fit for every persona portrait we currently use (some are
+      book covers, not faces), so this requires switching the
+      Hermione / Heathcliff / Anna stand-ins to actual face crops first.
+
 ## Streaming UX
 
 The upstream CHAI endpoint (`POST /endpoints/onsite/chat`) returns the

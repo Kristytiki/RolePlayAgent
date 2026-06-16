@@ -73,12 +73,20 @@ uv run roleplaychatboteval --no-judge --max-cases 3
 # Set ANTHROPIC_API_KEY to enable the penalty-based judge.
 ```
 
+## Further reading
+
+- **`RolePlayChatbotService/.claude/design.md`** — full design doc:
+  architecture, two-layer RAG, GCA mapping, memory model, schema.
+- **`RolePlayChatbotService/EXAMPLES.md`** — A/B comparisons (RAG+GCA off
+  vs on) on Mr. Darcy, Atticus Finch, Sherlock Holmes, Scarlett O'Hara,
+  plus a note on the upstream 80-token cap and how it affects S/A/T.
+- **`RolePlayChatbotEval/RESULTS.md`** — 8-case CoSER simulation results
+  with selected transcript excerpts.
+- **`TODO.md`** — known gaps (page-reload memory, manual forget, eval
+  judge run, streaming UX).
+
 ## Notes for reviewers
 
-- **Tools used**: Claude Code (Sonnet 4.5/Opus). Most of this code was
-  paired — design discussions, architecture decisions, and implementation
-  drafts via the CLI agent. Verification via curl + a small custom A/B
-  capture script (`scripts/ab_compare.py`).
 - **Datasets**: only public, MIT/CC-licensed sources (`Neph0s/CoSER`,
   `silk-road/ChatHaruhi-54K-Role-Playing-Dialogue`). No persona profile is
   LLM-synthesized — every character profile comes verbatim from CoSER.
