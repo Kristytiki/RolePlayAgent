@@ -79,3 +79,25 @@ _(scene_score=None, chunks=0)_
 _(scene_score=0.620, chunks=4, action='waves hand dismissively while smoothing her green velvet dress', thought='Please, God, don’t let him see how my hands are shaking')_
 
 ---
+
+## Note on Speech / Action / Thought output
+
+The CHAI endpoint enforces `max_output_tokens=80` server-side (see the
+smoke test in `chai/client.py`'s docstring). With three required labels
+(`Action:` / `Speech:` / `Thought:`) the tightest replies fit; richer
+turns frequently get truncated, and **`Thought` is the section most often
+dropped** because the model emits Action + Speech first and runs out of
+budget.
+
+We accept this — we don't truncate-then-rerun, we don't ask CHAI for a
+separate Thought call. When `Thought` is present (~50% of turns in our
+smoke runs) the UI shows it under the "show inner" toggle; when absent
+the bubble simply has Action + Speech. The parser falls through cleanly:
+`parse_sat()` returns `thought=None`, the API surfaces that, and the UI
+just doesn't render the empty section.
+
+If you want to maximise Thought retention without paying for a second
+CHAI round-trip, swap the order in `prompts/gca.py:SAT_INSTRUCTION` to
+`Thought → Action → Speech`. That trades "always-truncated Speech tail"
+for "always-present Thought" — different aesthetic; we kept the current
+order because Speech feels worse to clip mid-sentence than Thought does.
