@@ -1,0 +1,12 @@
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv
+
+# eval outputs (per-case json + transcripts)
+.eval_runs/
+
+.env

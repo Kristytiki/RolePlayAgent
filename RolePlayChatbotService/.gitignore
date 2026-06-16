@@ -1,0 +1,20 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# HF + embedding caches (datasets ~3GB, embeddings cached locally)
+.cache/
+
+# Sessions on disk
+.sessions/
+
+# Local env
+.env
+

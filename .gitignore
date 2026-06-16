@@ -1,0 +1,20 @@
+# language artifacts
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.venv/
+node_modules/
+.vite/
+
+# heavy data caches (HF datasets ~3GB, Qwen embeddings)
+.cache/
+
+# runtime state
+.sessions/
+.eval_runs/
+
+# secrets / local
+.env

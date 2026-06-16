@@ -1,0 +1,29 @@
+[project]
+name = "roleplaychatbotservice"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Zheqi wu", email = "zheqi@amazon.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "httpx>=0.27",
+    "datasets>=2.20",
+    "huggingface-hub>=0.24",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.32",
+    "pydantic>=2.8",
+    "pydantic-settings>=2.5",
+    "sentence-transformers>=3.1",
+    "faiss-cpu>=1.8",
+    "numpy>=1.26",
+    "strands-agents>=0.5",
+]
+
+[project.scripts]
+roleplaychatbotservice = "roleplaychatbotservice:main"
+
+[build-system]
+requires = ["uv_build>=0.11.7,<0.12.0"]
+build-backend = "uv_build"
