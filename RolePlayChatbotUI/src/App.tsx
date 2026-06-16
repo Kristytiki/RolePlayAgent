@@ -24,10 +24,22 @@ export default function App() {
   const [error, setError] = useState<string | null>(null);
 
   const [active, setActive] = useState<CreateSessionResp | null>(null);
-  const [bubbles, setBubbles] = useState<Bubble[]>([]);
+  // Per-persona conversation cache: hitting ← back keeps the bubbles around
+  // so re-entering the same persona resumes the conversation.
+  const [byPersona, setByPersona] = useState<Record<string, { session: CreateSessionResp; bubbles: Bubble[] }>>({});
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
   const [showInner, setShowInner] = useState(true);
+
+  const bubbles = active ? byPersona[active.persona.id]?.bubbles ?? [] : [];
+
+  function setBubblesFor(personaId: string, updater: (prev: Bubble[]) => Bubble[]) {
+    setByPersona((m) => {
+      const slot = m[personaId];
+      if (!slot) return m;
+      return { ...m, [personaId]: { ...slot, bubbles: updater(slot.bubbles) } };
+    });
+  }
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,10 +69,22 @@ export default function App() {
 
   async function startChat(p: Persona) {
     setError(null);
+    // Resume cached conversation if we already have a session for this persona.
+    const cached = byPersona[p.id];
+    if (cached) {
+      setActive(cached.session);
+      return;
+    }
     try {
       const sess = await api.createSession(p.id, "Reader");
+      setByPersona((m) => ({
+        ...m,
+        [p.id]: {
+          session: sess,
+          bubbles: [{ sender: p.name, message: sess.greeting }],
+        },
+      }));
       setActive(sess);
-      setBubbles([{ sender: p.name, message: sess.greeting }]);
     } catch (e) {
       setError(String(e));
     }
@@ -69,12 +93,13 @@ export default function App() {
   async function send() {
     if (!active || !input.trim() || sending) return;
     const msg = input.trim();
+    const personaId = active.persona.id;
     setInput("");
-    setBubbles((b) => [...b, { sender: "Reader", message: msg }]);
+    setBubblesFor(personaId, (b) => [...b, { sender: "Reader", message: msg }]);
     setSending(true);
     try {
       const r: SendMessageResp = await api.sendMessage(active.session_id, msg);
-      setBubbles((b) => [
+      setBubblesFor(personaId, (b) => [
         ...b,
         {
           sender: active.persona.name,
@@ -87,16 +112,19 @@ export default function App() {
       ]);
     } catch (e) {
       setError(String(e));
-      setBubbles((b) => [...b, { sender: "system", message: `[error: ${String(e)}]` }]);
+      setBubblesFor(personaId, (b) => [
+        ...b,
+        { sender: "system", message: `[error: ${String(e)}]` },
+      ]);
     } finally {
       setSending(false);
     }
   }
 
-  function endChat() {
-    if (active) api.deleteSession(active.session_id).catch(() => {});
+  // ← back: leave the chat view BUT keep the cached conversation so
+  // re-selecting the same persona resumes where we left off.
+  function backToPicker() {
     setActive(null);
-    setBubbles([]);
     setInput("");
   }
 
@@ -104,7 +132,7 @@ export default function App() {
     return (
       <div className="page chat-page">
         <header className="chat-header">
-          <button className="back" onClick={endChat}>← back</button>
+          <button className="back" onClick={backToPicker}>← back</button>
           <div className="chat-title">
             <span className="emoji">{active.persona.avatar_emoji}</span>
             <div>

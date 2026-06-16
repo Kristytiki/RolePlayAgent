@@ -4,6 +4,20 @@ CHAI take-home: a role-play chatbot built on top of CHAI's stateless model API,
 with two-layer RAG, CoSER given-circumstance prompting, Strands-managed memory,
 a React UI, and a CoSER-style evaluation harness.
 
+## Screenshots
+
+**Persona picker** — 9 literary characters from CoSER, with a semantic
+search box (powered by `Qwen3-Embedding-0.6B` + FAISS):
+
+![persona picker](docs/screenshots/picker.png)
+
+**Live chat** with Sherlock Holmes — RAG-retrieved canon opener
+("You have come from Afghanistan, I perceive."), then in-context
+deductions about the user's typing habits, language, and even the
+typical morning chemistry experiments at 221B Baker Street:
+
+![chat with sherlock](docs/screenshots/sherlock-chat.png)
+
 ## Layout
 
 ```
