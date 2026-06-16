@@ -35,6 +35,35 @@ plus a registry rehydrate.
       registry, but **does not delete the on-disk Strands session directory**.
       Add `shutil.rmtree(".sessions/session_<id>")` to the delete handler.
 
+## Streaming UX
+
+The upstream CHAI endpoint (`POST /endpoints/onsite/chat`) returns the
+full `model_output` string in a single response — it does not support SSE
+or chunked transfer. So **true streaming is not achievable** at the model
+layer; the bot's whole reply is materialised in one CHAI round-trip
+(~3-5 s end-to-end).
+
+What we *do* have:
+
+- A typing indicator in the chat composer while waiting on the round-trip
+  (3 dots animation, see `App.css :: .bubble.pending .typing`).
+- `ChaiModel.stream()` already emits Strands' `messageStart →
+  contentBlockDelta → messageStop` event sequence (one big delta), so any
+  Strands-Agent-side streaming hook works without further changes.
+
+What's left:
+
+- [ ] Cosmetic typewriter effect on the UI: after the reply lands,
+      reveal it character-by-character (~10 ms/char) instead of in one
+      jump. Doesn't reduce real latency — purely UX. Implement in
+      `App.tsx` by replacing the immediate `setBubbles` with an interval
+      that grows the bubble's `message` field.
+- [ ] Optional: convert `POST /chat/sessions/{id}/messages` to SSE that
+      delivers the same characters slowly server-side. Adds complexity
+      (SSE plumbing, EventSource on the client) for the same effect as
+      the cosmetic version above. Recommend skipping unless the model
+      provider grows real streaming.
+
 ## Eval harness
 
 - [ ] Wire `ANTHROPIC_API_KEY` and run the penalty-based judge over the 8
