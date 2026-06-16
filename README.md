@@ -48,7 +48,9 @@ uv run uvicorn roleplaychatbotservice.app:app --host 0.0.0.0 --port 8000
 # 2. UI (separate shell)
 cd RolePlayChatbotUI
 npm install
-npm run dev -- --host 0.0.0.0 --port 5173
+npm run dev
+# Vite is preconfigured to bind 0.0.0.0:5173 and proxy /personas, /chat, /health
+# to the backend on :8000 — so over an SSH tunnel you only need to forward 5173.
 
 # 3. Eval (optional, separate shell, service must be running)
 cd RolePlayChatbotEval

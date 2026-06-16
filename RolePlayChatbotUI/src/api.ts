@@ -1,6 +1,9 @@
 // Typed wrappers around the FastAPI backend.
 
-const BASE = import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:8000";
+// Empty base = relative URLs. In dev the vite.config.ts proxy forwards
+// /personas, /chat, /health to the FastAPI server on :8000. In prod you
+// either serve the UI from the same origin as the API or set VITE_API_BASE.
+const BASE = import.meta.env.VITE_API_BASE ?? "";
 
 export type Persona = {
   id: string;
