@@ -30,9 +30,15 @@ class ParsedReply:
 def parse_sat(text: str) -> ParsedReply:
     """Best-effort extraction of S/A/T sections from a CHAI reply.
 
-    Falls back to treating the whole text as `speech` if no labels match.
-    Strips surrounding markdown like '*action*' or '[thought]' that the model
-    sometimes uses.
+    CHAI is role-play tuned, not instruction tuned, so it often labels only
+    `Speech:` and leaves the action / thought as un-labelled narrative
+    *before* the Speech line. We salvage that:
+
+      - regex pulls every `Speech:` / `Action:` / `Thought:` block
+      - if only Speech is labelled but there is un-labelled prose before it,
+        we attribute that prose to action (parenthesised) or thought
+        (bracketed) when wrapper characters give it away
+      - last-ditch fallback: whole reply becomes `speech`
     """
     if not text:
         return ParsedReply(speech="", raw=text)
@@ -41,9 +47,10 @@ def parse_sat(text: str) -> ParsedReply:
     action_parts: list[str] = []
     thought_parts: list[str] = []
 
-    found_any = False
-    for m in _SAT_LINE_RE.finditer(text):
-        found_any = True
+    matches = list(_SAT_LINE_RE.finditer(text))
+    found_any = bool(matches)
+
+    for m in matches:
         kind = m.group(1).strip().lower()
         body = m.group(2).strip().rstrip(".·•— -").strip()
         if not body:
@@ -54,6 +61,26 @@ def parse_sat(text: str) -> ParsedReply:
             action_parts.append(_strip_wrappers(body))
         elif kind == "thought":
             thought_parts.append(_strip_wrappers(body))
+
+    # Salvage un-labelled narrative that appears before the first Speech:.
+    # Common CHAI shape:
+    #   "<narrative paragraphs about what they observe / feel>\n\nSpeech: ..."
+    # We split such lines into action vs thought based on bracket/paren markers.
+    if found_any and not action_parts and not thought_parts:
+        first_label_at = matches[0].start()
+        prefix = text[:first_label_at].strip()
+        if prefix:
+            for raw_line in (l.strip() for l in prefix.split("\n") if l.strip()):
+                stripped = _strip_wrappers(raw_line)
+                if not stripped:
+                    continue
+                if raw_line.startswith("(") or raw_line.startswith("*"):
+                    action_parts.append(stripped)
+                elif raw_line.startswith("[") or raw_line.startswith("_"):
+                    thought_parts.append(stripped)
+                else:
+                    # Default un-labelled prose → thought (inner narrative voice).
+                    thought_parts.append(stripped)
 
     if not found_any:
         return ParsedReply(speech=text.strip(), raw=text)

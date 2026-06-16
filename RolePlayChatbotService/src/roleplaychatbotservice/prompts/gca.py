@@ -22,11 +22,13 @@ from roleplaychatbotservice.personas.schema import BotPersona
 
 
 SAT_INSTRUCTION = (
-    "Respond in role-play form. Use this 3-line structure when natural:\n"
-    "Speech: <what you say aloud>\n"
+    "Output format — REQUIRED. Every reply must have all three labelled lines, "
+    "in this exact order:\n"
     "Action: (what you physically do or your facial expression)\n"
-    "Thought: [your private inner voice — others cannot hear this]\n"
-    "If only Speech fits the moment, just write Speech."
+    "Speech: <what you say aloud>\n"
+    "Thought: [your private inner voice — the user cannot hear this]\n"
+    "Do not add any text before 'Action:' and do not omit any line. "
+    "If a moment is silent, leave Speech empty after the colon, but keep the label."
 )
 
 
