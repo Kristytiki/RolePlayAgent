@@ -10,12 +10,6 @@ to see *before* the live conversation history goes here:
   4. ChatHaruhi-style retrieved few-shot
   5. S·A·T output format instructions
   6. Greeting (so CHAI sees "you are about to greet the user with X")
-
-This is conceptually identical to prompts/chat_history.build_chat_history,
-just collapsed into one string. The trade-off vs the multi-line ChaiMessage
-form: we lose CHAI's Bot/User alternation framing, but CHAI ignores sender
-labels anyway, so functionally equivalent — and now Strands handles all
-memory + persistence.
 """
 from __future__ import annotations
 

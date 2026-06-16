@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import {
   api,
+  portraitUrl,
   type CreateSessionResp,
   type Persona,
   type SendMessageResp,
@@ -134,7 +135,12 @@ export default function App() {
         <header className="chat-header">
           <button className="back" onClick={backToPicker}>← back</button>
           <div className="chat-title">
-            <span className="emoji">{active.persona.avatar_emoji}</span>
+            <img
+              className="portrait portrait-sm"
+              src={portraitUrl(active.persona)}
+              alt={active.persona.name}
+              loading="lazy"
+            />
             <div>
               <div className="name">{active.persona.name}</div>
               <div className="source">{active.persona.source}</div>
@@ -217,7 +223,12 @@ export default function App() {
       <div className="grid">
         {list.map((p) => (
           <button key={p.id} className="card" onClick={() => startChat(p)}>
-            <div className="card-emoji">{p.avatar_emoji}</div>
+            <img
+              className="portrait portrait-md"
+              src={portraitUrl(p)}
+              alt={p.name}
+              loading="lazy"
+            />
             <div className="card-name">{p.name}</div>
             <div className="card-tagline">{p.tagline}</div>
             <div className="card-source">{p.source}</div>

@@ -72,7 +72,23 @@
   border-color: var(--accent, #888);
   transform: translateY(-2px);
 }
-.card-emoji { font-size: 2.2rem; line-height: 1; }
+.portrait {
+  display: block;
+  object-fit: cover;
+  background: var(--bg, #111);
+  border: 1px solid var(--border, #2c2c2c);
+}
+.portrait-md {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+}
+.portrait-sm {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
 .card-name { font-weight: 600; font-size: 1.1rem; }
 .card-tagline { color: var(--muted, #aaa); font-size: 0.92rem; }
 .card-source { color: var(--muted, #888); font-size: 0.78rem; font-style: italic; }
@@ -110,7 +126,6 @@
   font-size: 0.95rem; cursor: pointer; padding: 0.3rem 0.5rem;
 }
 .chat-title { display: flex; align-items: center; gap: 0.7rem; flex: 1; }
-.chat-title .emoji { font-size: 1.8rem; }
 .chat-title .name { font-weight: 600; }
 .chat-title .source { font-size: 0.75rem; color: var(--muted, #888); font-style: italic; }
 .toggle { display: flex; align-items: center; gap: 0.35rem; font-size: 0.85rem; color: var(--muted, #aaa); cursor: pointer; }

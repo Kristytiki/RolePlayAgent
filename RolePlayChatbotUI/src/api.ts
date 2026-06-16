@@ -14,6 +14,16 @@ export type Persona = {
   tags: string[];
 };
 
+/**
+ * Per-persona portrait, sourced from public-domain Wikipedia/Commons images.
+ * Files live under /public/portraits/<id>.jpg so Vite serves them at
+ * /portraits/<id>.jpg without going through the API. See
+ * docs/portraits-credits.md for source + licensing of each.
+ */
+export function portraitUrl(persona: { id: string }): string {
+  return `/portraits/${persona.id}.jpg`;
+}
+
 export type CreateSessionResp = {
   session_id: string;
   persona: Persona;
