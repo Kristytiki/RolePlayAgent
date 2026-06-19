@@ -29,9 +29,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5811,
-    "num_wins": 1738,
-    "win_ratio": 0.2990879366718293,
+    "num_battles": 7852,
+    "num_wins": 2378,
+    "win_ratio": 0.30285277636271013,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -66,9 +66,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5771,
-    "num_wins": 1434,
-    "win_ratio": 0.2484837983018541,
+    "num_battles": 7804,
+    "num_wins": 1945,
+    "win_ratio": 0.24923116350589442,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -103,9 +103,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5748,
-    "num_wins": 1135,
-    "win_ratio": 0.1974599860821155,
+    "num_battles": 7786,
+    "num_wins": 1527,
+    "win_ratio": 0.19612124325712818,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -140,9 +140,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5803,
-    "num_wins": 1727,
-    "win_ratio": 0.29760468723074274,
+    "num_battles": 7827,
+    "num_wins": 2299,
+    "win_ratio": 0.2937268429794302,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -177,9 +177,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5667,
-    "num_wins": 1664,
-    "win_ratio": 0.293629786483148,
+    "num_battles": 7681,
+    "num_wins": 2278,
+    "win_ratio": 0.2965759666710064,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -214,9 +214,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5699,
-    "num_wins": 1961,
-    "win_ratio": 0.34409545534304264,
+    "num_battles": 7719,
+    "num_wins": 2661,
+    "win_ratio": 0.344733773804897,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -251,9 +251,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5853,
-    "num_wins": 1865,
-    "win_ratio": 0.3186400136682043,
+    "num_battles": 7854,
+    "num_wins": 2508,
+    "win_ratio": 0.31932773109243695,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -288,9 +288,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5786,
-    "num_wins": 1559,
-    "win_ratio": 0.26944348427238163,
+    "num_battles": 7787,
+    "num_wins": 2129,
+    "win_ratio": 0.27340439193527677,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -362,9 +362,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5789,
-    "num_wins": 1527,
-    "win_ratio": 0.2637761271376749,
+    "num_battles": 7828,
+    "num_wins": 2087,
+    "win_ratio": 0.2666070516096065,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -438,9 +438,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 5597,
-    "num_wins": 1784,
-    "win_ratio": 0.3187421833124888,
+    "num_battles": 7602,
+    "num_wins": 2398,
+    "win_ratio": 0.31544330439358065,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -477,9 +477,9 @@
     },
     "status": "completed_old_max128",
     "note": "First fire — ran successfully on Chai (status=torndown), but Chai later tightened validation so re-submission with same params would now be rejected.",
-    "num_battles": 5510,
-    "num_wins": 1804,
-    "win_ratio": 0.3274047186932849,
+    "num_battles": 7612,
+    "num_wins": 2505,
+    "win_ratio": 0.3290856542301629,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -516,9 +516,9 @@
       "frequency_penalty": 0.3
     },
     "status": "active",
-    "num_battles": 5579,
-    "num_wins": 1604,
-    "win_ratio": 0.28750672163470153,
+    "num_battles": 7559,
+    "num_wins": 2203,
+    "win_ratio": 0.29144066675486174,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -556,9 +556,9 @@
       "top_p": 0.9
     },
     "status": "active",
-    "num_battles": 5439,
-    "num_wins": 1762,
-    "win_ratio": 0.3239566096708954,
+    "num_battles": 7497,
+    "num_wins": 2421,
+    "win_ratio": 0.32292917166866747,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -593,9 +593,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5653,
-    "num_wins": 1729,
-    "win_ratio": 0.30585529807182027,
+    "num_battles": 7744,
+    "num_wins": 2376,
+    "win_ratio": 0.3068181818181818,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -632,9 +632,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 5363,
-    "num_wins": 1923,
-    "win_ratio": 0.3585679656908447,
+    "num_battles": 7314,
+    "num_wins": 2636,
+    "win_ratio": 0.360404703308723,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -710,9 +710,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 5644,
-    "num_wins": 1761,
-    "win_ratio": 0.3120127569099929,
+    "num_battles": 7659,
+    "num_wins": 2443,
+    "win_ratio": 0.3189711450581016,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -749,9 +749,9 @@
     },
     "status": "completed_old_max128",
     "note": "First fire — ran successfully on Chai (status=torndown), but Chai later tightened validation so re-submission with same params would now be rejected.",
-    "num_battles": 5434,
-    "num_wins": 1912,
-    "win_ratio": 0.35185866764814133,
+    "num_battles": 7496,
+    "num_wins": 2640,
+    "win_ratio": 0.35218783351120597,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -901,9 +901,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 5704,
-    "num_wins": 1637,
-    "win_ratio": 0.2869915848527349,
+    "num_battles": 7686,
+    "num_wins": 2195,
+    "win_ratio": 0.285584179026802,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -975,9 +975,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 1397,
-    "num_wins": 380,
-    "win_ratio": 0.2720114531138153,
+    "num_battles": 3445,
+    "num_wins": 932,
+    "win_ratio": 0.27053701015965165,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1014,9 +1014,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 1380,
-    "num_wins": 397,
-    "win_ratio": 0.2876811594202899,
+    "num_battles": 3367,
+    "num_wins": 975,
+    "win_ratio": 0.28957528957528955,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1090,9 +1090,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 1455,
-    "num_wins": 480,
-    "win_ratio": 0.32989690721649484,
+    "num_battles": 3506,
+    "num_wins": 1184,
+    "win_ratio": 0.3377067883628066,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1129,9 +1129,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 1440,
-    "num_wins": 554,
-    "win_ratio": 0.38472222222222224,
+    "num_battles": 3439,
+    "num_wins": 1322,
+    "win_ratio": 0.38441407385867987,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1168,9 +1168,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 1435,
-    "num_wins": 483,
-    "win_ratio": 0.33658536585365856,
+    "num_battles": 3411,
+    "num_wins": 1150,
+    "win_ratio": 0.33714453239519204,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1244,10 +1244,10 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 584,
-    "num_wins": 159,
-    "win_ratio": 0.2722602739726027,
-    "celo_rating": null,
+    "num_battles": 2571,
+    "num_wins": 670,
+    "win_ratio": 0.26059898872034226,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
   },
@@ -1283,10 +1283,10 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 545,
-    "num_wins": 175,
-    "win_ratio": 0.3211009174311927,
-    "celo_rating": null,
+    "num_battles": 2609,
+    "num_wins": 781,
+    "win_ratio": 0.2993484093522422,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
   },
@@ -1320,10 +1320,10 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 571,
-    "num_wins": 151,
-    "win_ratio": 0.26444833625218916,
-    "celo_rating": null,
+    "num_battles": 2683,
+    "num_wins": 723,
+    "win_ratio": 0.2694744688781215,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
   },
@@ -1357,10 +1357,10 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 285,
-    "num_wins": 73,
-    "win_ratio": 0.256140350877193,
-    "celo_rating": null,
+    "num_battles": 2399,
+    "num_wins": 666,
+    "win_ratio": 0.27761567319716546,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
   },
@@ -1396,10 +1396,10 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 303,
-    "num_wins": 83,
-    "win_ratio": 0.2739273927392739,
-    "celo_rating": null,
+    "num_battles": 2457,
+    "num_wins": 709,
+    "win_ratio": 0.28856328856328856,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
   },
@@ -1433,11 +1433,260 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 305,
-    "num_wins": 74,
-    "win_ratio": 0.24262295081967214,
-    "celo_rating": null,
+    "num_battles": 2327,
+    "num_wins": 572,
+    "win_ratio": 0.24581005586592178,
+    "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
+  },
+  {
+    "ts": "2026-06-19T22:11:29",
+    "slug": "qwen3b_pippa_r32",
+    "model_repo": "ZheqiWu/Qwen2.5-3B-PIPPA-r32",
+    "submission_id": "zheqiwu-qwen2-5-3b-pippa-r32_v1",
+    "url": "https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r32_v1",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 8,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+      "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+      "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+      "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+      "response_template": "<|im_start|>assistant\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {},
+    "num_battles": 773,
+    "num_wins": 213,
+    "win_ratio": 0.2755498059508409,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
+  },
+  {
+    "ts": "2026-06-19T22:11:31",
+    "slug": "qwen3b_pippa_r32_bo16",
+    "model_repo": "ZheqiWu/Qwen2.5-3B-PIPPA-r32",
+    "submission_id": "zheqiwu-qwen2-5-3b-pippa-r32_v2",
+    "url": "https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r32_v2",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 16,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+      "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+      "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+      "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+      "response_template": "<|im_start|>assistant\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {
+      "best_of": 16
+    },
+    "num_battles": 793,
+    "num_wins": 242,
+    "win_ratio": 0.3051702395964691,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
+  },
+  {
+    "ts": "2026-06-19T22:29:31",
+    "slug": "qwen3b_pippa_r16",
+    "model_repo": "ZheqiWu/Qwen2.5-3B-PIPPA-r16",
+    "submission_id": "zheqiwu-qwen2-5-3b-pippa-r16_v1",
+    "url": "https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r16_v1",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 8,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+      "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+      "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+      "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+      "response_template": "<|im_start|>assistant\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {},
+    "num_battles": 145,
+    "num_wins": 47,
+    "win_ratio": 0.32413793103448274,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
+  },
+  {
+    "ts": "2026-06-19T22:29:33",
+    "slug": "qwen3b_pippa_r16_bo16",
+    "model_repo": "ZheqiWu/Qwen2.5-3B-PIPPA-r16",
+    "submission_id": "zheqiwu-qwen2-5-3b-pippa-r16_v2",
+    "url": "https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r16_v2",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 16,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+      "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+      "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+      "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+      "response_template": "<|im_start|>assistant\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {
+      "best_of": 16
+    },
+    "num_battles": 120,
+    "num_wins": 39,
+    "win_ratio": 0.325,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
+  },
+  {
+    "ts": "2026-06-19T22:40:26",
+    "slug": "llama32_3b_anime_step30",
+    "model_repo": "ZheqiWu/Llama-3.2-3B-Anime-step30",
+    "submission_id": "zheqiwu-llama-3-2-3b-an_23097_v1",
+    "url": "https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_23097_v1",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 8,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+      "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+      "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+      "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+      "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {},
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "pending"
+  },
+  {
+    "ts": "2026-06-19T22:40:27",
+    "slug": "llama32_3b_anime_step60",
+    "model_repo": "ZheqiWu/Llama-3.2-3B-Anime-step60",
+    "submission_id": "zheqiwu-llama-3-2-3b-an_12275_v1",
+    "url": "https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_12275_v1",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 8,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+      "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+      "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+      "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+      "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {},
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "pending"
+  },
+  {
+    "ts": "2026-06-19T22:40:29",
+    "slug": "llama32_3b_anime_step100",
+    "model_repo": "ZheqiWu/Llama-3.2-3B-Anime-step100",
+    "submission_id": "zheqiwu-llama-3-2-3b-an_40296_v1",
+    "url": "https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_40296_v1",
+    "generation_params": {
+      "temperature": 1.0,
+      "top_p": 1.0,
+      "min_p": 0.0,
+      "top_k": 40,
+      "presence_penalty": 0.0,
+      "frequency_penalty": 0.0,
+      "stopping_words": [
+        "\n"
+      ],
+      "max_input_tokens": 2048,
+      "best_of": 8,
+      "max_output_tokens": 64
+    },
+    "formatter": {
+      "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+      "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+      "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+      "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+      "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+      "truncate_by_message": true
+    },
+    "gen_overrides": {},
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "pending"
   }
 ]

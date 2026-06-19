@@ -27,6 +27,11 @@ if _DATASET == "pippa":
     OUT_LORA = HERE / f"assets/qwen25-3b-pippa{_TAG_SUFFIX}-lora"
     OUT_MERGED = HERE / f"assets/qwen25-3b-pippa{_TAG_SUFFIX}-merged"
     SNAPSHOT_PREFIX = f"qwen25-3b-pippa{_TAG_SUFFIX}"
+elif _DATASET == "hieu":
+    DATA = HERE / "assets/sft_chai_hieu.json"
+    OUT_LORA = HERE / f"assets/qwen25-3b-hieu{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/qwen25-3b-hieu{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"qwen25-3b-hieu{_TAG_SUFFIX}"
 else:
     DATA = HERE / "assets/sft_chai_aligned.json"
     OUT_LORA = HERE / f"assets/qwen25-3b-coser{_TAG_SUFFIX}-lora"

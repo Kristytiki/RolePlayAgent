@@ -186,6 +186,18 @@ VARIANTS = [
             "Use (your action) for actions which others can see.<|im_end|>\n"},
         {}),
 
+    # PIPPA-r32 = 200 LoRA steps r=32 lr=2e-4 on 10k PIPPA (character.ai user chat).
+    # Hypothesis: CoSER's literary distribution lost to baseline; PIPPA matches Chai users.
+    ("qwen3b_pippa_r32",         "ZheqiWu/Qwen2.5-3B-PIPPA-r32", QWEN_CHATML, {}),
+    ("qwen3b_pippa_r32_bo16",    "ZheqiWu/Qwen2.5-3B-PIPPA-r32", QWEN_CHATML,
+        {"best_of": 16}),
+
+    # PIPPA-r16 = lighter LoRA (r=16, alpha=32, lr=1e-4) — same data, less aggressive
+    # delta to avoid the over-shoot pattern we saw with CoSER.
+    ("qwen3b_pippa_r16",         "ZheqiWu/Qwen2.5-3B-PIPPA-r16", QWEN_CHATML, {}),
+    ("qwen3b_pippa_r16_bo16",    "ZheqiWu/Qwen2.5-3B-PIPPA-r16", QWEN_CHATML,
+        {"best_of": 16}),
+
     # Llama-3.2-3B SFT-then-DPO smoke run (Strategy B: Opus chosen + base sampled rejected, 500 pairs).
     # Mirrors the meta-llama-llama-3-2-3b_30223_v2 stock submission so we can read the win-rate delta.
     ("llama32_3b_dpo_smoke",
@@ -194,6 +206,45 @@ VARIANTS = [
     # Qwen2.5-3B-CoSER-DPO smoke — pipeline shakedown using the already-trained Qwen SFT base.
     ("qwen3b_coser_dpo_smoke",
         "ZheqiWu/Qwen2.5-3B-CoSER-DPO-smoke", QWEN_CHATML, {}),
+
+    # Llama-3.2-3B + PIPPA SFT, three checkpoints (step 50/100/200) — production target.
+    # Same base as meta-llama-llama-3-2-3b_30223_v2; PIPPA is the on-distribution corpus for Chai.
+    ("llama32_3b_pippa_step50",
+        "ZheqiWu/Llama-3.2-3B-PIPPA-step50",  LLAMA31_HEADERED, {}),
+    ("llama32_3b_pippa_step100",
+        "ZheqiWu/Llama-3.2-3B-PIPPA-step100", LLAMA31_HEADERED, {}),
+    ("llama32_3b_pippa_step200",
+        "ZheqiWu/Llama-3.2-3B-PIPPA-step200", LLAMA31_HEADERED, {}),
+
+    # Llama-3.2-3B + PIPPA SFT (step200) + DPO 200 steps on 100 PIPPA preference pairs.
+    # Two-stage RLHF style: SFT to get on-distribution, DPO to nudge toward labeler-preferred replies.
+    ("llama32_3b_pippa_dpo",
+        "ZheqiWu/Llama-3.2-3B-PIPPA-DPO", LLAMA31_HEADERED, {}),
+
+    # Llama-3.2-3B + Anime/Fandom/OC SFT (100 hand-curated multi-turn convos written by Opus subagents).
+    # 35 anime tropes (tsundere/yandere/kuudere/etc), 35 fandom canon (Genshin/Honkai/Fate/HxH/MHA/etc),
+    # 30 dark OC (vampire mafia, monster-girl, AI gf, yandere queen). Single-line outputs aligned to Chai.
+    ("llama32_3b_anime_step30",
+        "ZheqiWu/Llama-3.2-3B-Anime-step30",  LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_step60",
+        "ZheqiWu/Llama-3.2-3B-Anime-step60",  LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_step100",
+        "ZheqiWu/Llama-3.2-3B-Anime-step100", LLAMA31_HEADERED, {}),
+
+    # Qwen3-4B + Anime/Fandom/OC SFT — same Opus-synth corpus as the Llama runs.
+    # Stronger base (Qwen3-4B currently ranks #2 on the leaderboard, 35.22%).
+    ("qwen3_4b_anime_step30",
+        "ZheqiWu/Qwen3-4B-Anime-step30",  QWEN_CHATML, {}),
+    ("qwen3_4b_anime_step60",
+        "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML, {}),
+    ("qwen3_4b_anime_step100",
+        "ZheqiWu/Qwen3-4B-Anime-step100", QWEN_CHATML, {}),
+
+    # Qwen3-4B-Anime stacked with the leaderboard-winning best_of=16 trick (the #1 trick uses bo=16).
+    ("qwen3_4b_anime_step30_bo16",
+        "ZheqiWu/Qwen3-4B-Anime-step30",  QWEN_CHATML, {"best_of": 16}),
+    ("qwen3_4b_anime_step60_bo16",
+        "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML, {"best_of": 16}),
 ]
 
 # ---- Submitter ----------------------------------------------------------

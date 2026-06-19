@@ -29,6 +29,26 @@ N_KEEP = int(os.environ.get("N_KEEP", "10000"))
 MAX_TURNS = 20            # cap conversation length
 MAX_CHARS_PER_TURN = 600  # cap per-turn (preprocess feeds 2048 ctx, leave headroom for system)
 
+# Only keep RP-flavored categories that match Chai users. Set CATEGORY_FILTER=0
+# to disable. Default ON to drop Discussion/Knowledge/Advice/Debate noise.
+CATEGORY_WHITELIST = {
+    "Anime",
+    "Action",
+    "Movies & TV",
+    "Fantasy",
+    "Anime Game Characters",
+    "Game Characters",
+    "Games",
+    "Love",
+    "Drama",
+    "Comedy",
+    "VTuber",
+    "Famous People",
+    "Mystery",
+    "Science Fiction",
+}
+CATEGORY_FILTER = os.environ.get("CATEGORY_FILTER", "1") != "0"
+
 def clean_assistant(value: str, bot_name: str) -> str:
     s = value
     # strip leading "{{char}}:" or "BotName:" if present
@@ -43,6 +63,34 @@ def clean_assistant(value: str, bot_name: str) -> str:
         s = s[:MAX_CHARS_PER_TURN].rsplit(" ", 1)[0] + "..."
     return s
 
+
+# Casual-tone hard filter: drop assistant turns that don't fit Chai user expectations.
+THOUGHT_BRACKET_RE = re.compile(r"\[(?:thought|inner|mind|thinking)[\s:]", re.IGNORECASE)
+TEMPLATE_LEFTOVER_RE = re.compile(r"<\|[a-z_]+\|>|\{\{[a-z_]+\}\}", re.IGNORECASE)
+NARRATION_HEAVY_RE = re.compile(r"^\*[^*]{200,}\*\s*$")  # one giant asterisk-only block
+
+def is_casual_assistant(text: str, max_chars: int = 350) -> tuple[bool, str]:
+    """Return (keep, reason_if_drop)."""
+    t = text.strip()
+    if not t:
+        return False, "empty"
+    if len(t) > max_chars:
+        return False, "too_long"
+    if THOUGHT_BRACKET_RE.search(t):
+        return False, "thought_bracket"
+    if TEMPLATE_LEFTOVER_RE.search(t):
+        return False, "template_leftover"
+    if NARRATION_HEAVY_RE.match(t):
+        return False, "narration_only"
+    # Drop if it's entirely action without any spoken text (asterisks comprise > 70% of chars)
+    asterisk_chars = sum(1 for ch in t if ch == "*")
+    if asterisk_chars >= 4:
+        # find content inside *...* blocks
+        action_chars = sum(len(m) for m in re.findall(r"\*[^*]+\*", t))
+        if len(t) > 0 and action_chars / len(t) > 0.85:
+            return False, "all_action_no_speech"
+    return True, ""
+
 def clean_user(value: str) -> str:
     s = re.sub(r"^\{\{user\}\}\s*:\s*", "", value)
     s = re.sub(r"\s*\n+\s*", " ", s)
@@ -51,17 +99,35 @@ def clean_user(value: str) -> str:
         s = s[:MAX_CHARS_PER_TURN].rsplit(" ", 1)[0] + "..."
     return s
 
+CASUAL_STYLE_GUIDE = (
+    "Style: chat with the user like a real person texting on a phone. "
+    "Short messages (1-2 sentences). Casual, modern voice. "
+    "Use *action* sparingly for physical action, never [thought] or inner monologue. "
+    "Emoji are fine where they feel natural. Stay in character; do not break the fourth wall."
+)
+
+
 def build_system(rec: dict) -> str:
     parts = []
     name = rec.get("bot_name") or "Character"
     parts.append(f"You are {name}.")
     desc = (rec.get("bot_description") or "").strip()
     if desc:
-        parts.append(desc[:800])
+        parts.append(desc[:600])
     defs = (rec.get("bot_definitions") or "").strip()
     if defs:
-        parts.append("Reference dialogue snippets (do not copy verbatim):\n" + defs[:800])
+        parts.append("Reference dialogue snippets (style only, do not copy verbatim):\n" + defs[:500])
+    parts.append(CASUAL_STYLE_GUIDE)
     return "\n\n".join(parts)
+
+
+def has_whitelisted_category(rec: dict) -> bool:
+    cats = rec.get("categories") or []
+    if isinstance(cats, str):
+        cats = [cats]
+    if not cats:
+        return False
+    return any(c in CATEGORY_WHITELIST for c in cats)
 
 def main():
     if not SRC.exists():
@@ -71,6 +137,8 @@ def main():
     n_total = 0
     n_drop_short = 0
     n_drop_no_bot = 0
+    n_drop_category = 0
+    n_drop_casual = 0
 
     with open(SRC, "r", encoding="utf-8") as f:
         for line in f:
@@ -78,6 +146,9 @@ def main():
             try:
                 rec = json.loads(line)
             except json.JSONDecodeError:
+                continue
+            if CATEGORY_FILTER and not has_whitelisted_category(rec):
+                n_drop_category += 1
                 continue
             convs = rec.get("conversation") or []
             if len(convs) < 4:
@@ -97,8 +168,16 @@ def main():
             if greeting:
                 messages.append({"from": "assistant", "value": clean_assistant(greeting, bot_name)})
 
+            # Hard-filter the greeting too
+            if greeting:
+                ok, _why = is_casual_assistant(messages[-1]["value"])
+                if not ok:
+                    n_drop_casual += 1
+                    continue
+
             prev_role = "assistant" if greeting else None
             turn_count = 0
+            casual_failed = False
             for turn in convs:
                 if turn_count >= MAX_TURNS:
                     break
@@ -113,6 +192,12 @@ def main():
                 cleaned = clean_user(msg) if is_human else clean_assistant(msg, bot_name)
                 if not cleaned:
                     continue
+                # Casual hard-filter: drop the WHOLE conversation if any assistant turn fails
+                if not is_human:
+                    ok, _why = is_casual_assistant(cleaned)
+                    if not ok:
+                        casual_failed = True
+                        break
                 # Merge consecutive same-role
                 if messages and messages[-1]["from"] == role:
                     messages[-1]["value"] = (messages[-1]["value"].rstrip() + " " + cleaned).strip()
@@ -120,6 +205,9 @@ def main():
                     messages.append({"from": role, "value": cleaned})
                 prev_role = role
                 turn_count += 1
+            if casual_failed:
+                n_drop_casual += 1
+                continue  # outer loop, drop this conversation
 
             # Need at least one assistant turn after the greeting
             if sum(1 for m in messages if m["from"] == "assistant") < 1:
@@ -130,7 +218,8 @@ def main():
 
             out.append({"conversations": messages})
 
-    print(f"loaded {n_total}; dropped short={n_drop_short} no_bot={n_drop_no_bot}")
+    print(f"loaded {n_total}; dropped category={n_drop_category} "
+          f"short={n_drop_short} no_bot={n_drop_no_bot} casual={n_drop_casual}")
     print(f"kept {len(out)} samples")
 
     random.shuffle(out)

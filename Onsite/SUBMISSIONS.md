@@ -1507,3 +1507,283 @@ Win-rate / preferences are filled in manually after ~90min eval.
 
 ---
 
+## `qwen3b_pippa_r32`  —  2026-06-19 22:11
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-pippa-r32_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r32_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-PIPPA-r32`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_pippa_r32_bo16`  —  2026-06-19 22:11
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-pippa-r32_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r32_v2
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-PIPPA-r32`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_pippa_r16`  —  2026-06-19 22:29
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-pippa-r16_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r16_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-PIPPA-r16`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_pippa_r16_bo16`  —  2026-06-19 22:29
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-pippa-r16_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-pippa-r16_v2
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-PIPPA-r16`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_step30`  —  2026-06-19 22:40
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_23097_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_23097_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-step30`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_step60`  —  2026-06-19 22:40
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_12275_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_12275_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_step100`  —  2026-06-19 22:40
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_40296_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_40296_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+

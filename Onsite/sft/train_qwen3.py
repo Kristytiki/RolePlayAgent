@@ -1,13 +1,10 @@
 """
-Unsloth + LoRA SFT for Llama-3.2-3B-Instruct on CoSER (preprocessed).
+Unsloth + LoRA SFT for Qwen3-4B-Instruct-2507 on the Opus-synth anime/fandom/OC corpus.
 
-Run after download.sh + preprocess.py.
-
-L4 24GB single GPU. ~30k samples, 500 steps ~= 1-2h.
+L4 24GB single GPU. 100 hand-curated multi-turn convos × 100 steps with snapshots.
 Output:
-    Onsite/sft/assets/llama32-3b-coser-lora/        LoRA adapters per checkpoint
-    Onsite/trained_model/llama32-3b-coser-step{200,500}/   merged 16-bit snapshots
-    Onsite/trained_model/llama32-3b-coser-merged/   final merged 16-bit (DPO start point)
+    Onsite/trained_model/qwen3-4b-anime-step{30,60,100}/   merged 16-bit snapshots
+    Onsite/trained_model/qwen3-4b-anime-merged/             final merged 16-bit
 """
 import json
 from pathlib import Path
@@ -20,10 +17,10 @@ from transformers import TrainingArguments, TrainerCallback
 
 HERE = Path(__file__).parent
 DATA = HERE / "assets/sft_chai_anime.json"
-BASE = HERE / "assets/Llama-3.2-3B-Instruct"
-OUT_LORA = HERE / "assets/llama32-3b-anime-lora"
+BASE = HERE / "assets/Qwen3-4B-Instruct-2507"
+OUT_LORA = HERE / "assets/qwen3-4b-anime-lora"
 TRAINED_DIR = HERE.parent / "trained_model"
-OUT_MERGED = TRAINED_DIR / "llama32-3b-anime-merged"
+OUT_MERGED = TRAINED_DIR / "qwen3-4b-anime-merged"
 
 MAX_SEQ_LEN = 2048
 MAX_STEPS = 100
@@ -55,8 +52,8 @@ def main() -> None:
         dtype=None,
         load_in_4bit=True,
     )
-    # Llama-3 / 3.1 / 3.2 share the same headered template (Unsloth alias "llama-3.1").
-    tokenizer = get_chat_template(tokenizer, chat_template="llama-3.1")
+    # Qwen3 uses the same ChatML markers as Qwen2.5 (Unsloth alias "qwen-2.5").
+    tokenizer = get_chat_template(tokenizer, chat_template="qwen-2.5")
 
     model = FastLanguageModel.get_peft_model(
         model,
@@ -109,11 +106,11 @@ def main() -> None:
         args=args,
     )
 
-    # Mask everything except assistant turns. Llama-3 headered markers.
+    # Mask everything except assistant turns. ChatML markers (Qwen2.5/Qwen3).
     trainer = train_on_responses_only(
         trainer,
-        instruction_part="<|start_header_id|>user<|end_header_id|>\n\n",
-        response_part="<|start_header_id|>assistant<|end_header_id|>\n\n",
+        instruction_part="<|im_start|>user\n",
+        response_part="<|im_start|>assistant\n",
     )
 
     class StepwiseSaveCallback(TrainerCallback):
@@ -126,7 +123,7 @@ def main() -> None:
                 model.save_pretrained(str(lora_dir))
                 tokenizer.save_pretrained(str(lora_dir))
             if step in SNAPSHOT_MERGED_AT:
-                merged_dir = TRAINED_DIR / f"llama32-3b-anime-step{step}"
+                merged_dir = TRAINED_DIR / f"qwen3-4b-anime-step{step}"
                 print(f"[callback] step {step}: saving merged 16-bit to {merged_dir}")
                 merged_dir.mkdir(parents=True, exist_ok=True)
                 model.save_pretrained_merged(
