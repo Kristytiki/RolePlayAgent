@@ -18,3 +18,15 @@ node_modules/
 
 # secrets / local
 .env
+
+# Onsite SFT pipeline: large weights, datasets, logs, venvs
+Onsite/sft/assets/
+Onsite/sft/.venv/
+Onsite/sft/unsloth_compiled_cache/
+Onsite/sft/*.log
+Onsite/train_model/*/*.safetensors
+Onsite/train_model/*/tokenizer.json
+
+# External repos cloned for reference (not redistributed)
+CoSER/
+
