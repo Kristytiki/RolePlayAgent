@@ -1787,3 +1787,203 @@ Win-rate / preferences are filled in manually after ~90min eval.
 
 ---
 
+## `qwen3_4b_anime_step30`  —  2026-06-19 22:59
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step30_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step30_v1
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step30`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60`  —  2026-06-19 22:59
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v1
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step30_bo16`  —  2026-06-19 22:59
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step30_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step30_v2
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step30`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo16`  —  2026-06-19 22:59
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v2
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step100`  —  2026-06-19 22:59
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-s_1701_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_1701_v1
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
