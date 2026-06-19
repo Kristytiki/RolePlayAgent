@@ -20,10 +20,14 @@ fi
 hf download Qwen/Qwen2.5-3B-Instruct \
   --local-dir assets/Qwen2.5-3B-Instruct
 
+# Llama-3.2-3B-Instruct base for the DPO experiment (gated; needs HF_TOKEN with model access)
+hf download meta-llama/Llama-3.2-3B-Instruct \
+  --local-dir assets/Llama-3.2-3B-Instruct
+
 # CoSER SFT data (single file, ShareGPT format)
 hf download Neph0s/CoSER \
   --repo-type dataset \
   --include "train/sft_conversations_sharegpt.json" \
   --local-dir assets/CoSER
 
-echo "Done. Model: assets/Qwen2.5-3B-Instruct/  Data: assets/CoSER/train/sft_conversations_sharegpt.json"
+echo "Done. Models: assets/Qwen2.5-3B-Instruct/, assets/Llama-3.2-3B-Instruct/  Data: assets/CoSER/train/sft_conversations_sharegpt.json"

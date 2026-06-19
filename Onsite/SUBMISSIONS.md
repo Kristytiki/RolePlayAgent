@@ -1267,3 +1267,243 @@ Win-rate / preferences are filled in manually after ~90min eval.
 
 ---
 
+## `qwen3b_coser_step200`  —  2026-06-19 21:17
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_30253_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_30253_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_coser_step200_bo16`  —  2026-06-19 21:17
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_30253_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_30253_v2
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_coser_step200_coser_guide`  —  2026-06-19 21:17
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_30253_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_30253_v3
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}\n\nUse [your thought] for thoughts which others can't see. Use (your action) for actions which others can see.<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_coser_step500`  —  2026-06-19 21:24
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_40142_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_40142_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step500`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_coser_step500_bo16`  —  2026-06-19 21:24
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_40142_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_40142_v2
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step500`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_coser_step500_coser_guide`  —  2026-06-19 21:24
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-cose_40142_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-cose_40142_v3
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-CoSER-step500`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}\n\nUse [your thought] for thoughts which others can't see. Use (your action) for actions which others can see.<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+

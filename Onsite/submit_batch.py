@@ -161,6 +161,39 @@ VARIANTS = [
             "Use [your thought] for thoughts which others can't see. "
             "Use (your action) for actions which others can see.<|im_end|>\n"},
         {}),
+
+    # step200 = 200 LoRA steps on 30k CoSER, eff bs 8, lr 2e-4 cosine — first real-loss run.
+    ("qwen3b_coser_step200",         "ZheqiWu/Qwen2.5-3B-CoSER-step200", QWEN_CHATML, {}),
+    ("qwen3b_coser_step200_bo16",    "ZheqiWu/Qwen2.5-3B-CoSER-step200", QWEN_CHATML,
+        {"best_of": 16}),
+    ("qwen3b_coser_step200_coser_guide", "ZheqiWu/Qwen2.5-3B-CoSER-step200",
+        {**QWEN_CHATML,
+         "memory_template":
+            "<|im_start|>system\n{memory}\n\n"
+            "Use [your thought] for thoughts which others can't see. "
+            "Use (your action) for actions which others can see.<|im_end|>\n"},
+        {}),
+
+    # step500 = 500 LoRA steps on 30k CoSER, full cosine schedule — final loss ~1.7-1.86.
+    ("qwen3b_coser_step500",         "ZheqiWu/Qwen2.5-3B-CoSER-step500", QWEN_CHATML, {}),
+    ("qwen3b_coser_step500_bo16",    "ZheqiWu/Qwen2.5-3B-CoSER-step500", QWEN_CHATML,
+        {"best_of": 16}),
+    ("qwen3b_coser_step500_coser_guide", "ZheqiWu/Qwen2.5-3B-CoSER-step500",
+        {**QWEN_CHATML,
+         "memory_template":
+            "<|im_start|>system\n{memory}\n\n"
+            "Use [your thought] for thoughts which others can't see. "
+            "Use (your action) for actions which others can see.<|im_end|>\n"},
+        {}),
+
+    # Llama-3.2-3B SFT-then-DPO smoke run (Strategy B: Opus chosen + base sampled rejected, 500 pairs).
+    # Mirrors the meta-llama-llama-3-2-3b_30223_v2 stock submission so we can read the win-rate delta.
+    ("llama32_3b_dpo_smoke",
+        "ZheqiWu/Llama-3.2-3B-CoSER-DPO-smoke", LLAMA31_HEADERED, {}),
+
+    # Qwen2.5-3B-CoSER-DPO smoke — pipeline shakedown using the already-trained Qwen SFT base.
+    ("qwen3b_coser_dpo_smoke",
+        "ZheqiWu/Qwen2.5-3B-CoSER-DPO-smoke", QWEN_CHATML, {}),
 ]
 
 # ---- Submitter ----------------------------------------------------------

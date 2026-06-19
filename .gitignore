@@ -24,8 +24,15 @@ Onsite/sft/assets/
 Onsite/sft/.venv/
 Onsite/sft/unsloth_compiled_cache/
 Onsite/sft/*.log
+Onsite/dpo/assets/
+Onsite/dpo/unsloth_compiled_cache/
+Onsite/dpo/__pycache__/
+Onsite/dpo/*.log
 Onsite/train_model/*/*.safetensors
 Onsite/train_model/*/tokenizer.json
+
+# Chai API model_info responses include third-party AWS pod env vars; do not commit raw dumps.
+Onsite/submissions_eval.json
 
 # External repos cloned for reference (not redistributed)
 CoSER/

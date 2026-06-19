@@ -29,7 +29,8 @@ uv pip install \
   "trl>=0.18.2,<0.19.0" "transformers>=4.44" "datasets>=2.20" \
   "peft>=0.12" "accelerate>=0.33" "bitsandbytes>=0.43" \
   "torchao<0.10" setuptools \
-  "huggingface_hub[cli]" sentencepiece protobuf
+  "huggingface_hub[cli]" sentencepiece protobuf \
+  "anthropic>=0.40" "pydantic>=2"
 
 python - <<'PY'
 import torch
