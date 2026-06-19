@@ -24,6 +24,7 @@ Onsite/sft/assets/
 Onsite/sft/.venv/
 Onsite/sft/unsloth_compiled_cache/
 Onsite/sft/*.log
+Onsite/sft/*.nohup
 Onsite/dpo/assets/
 Onsite/dpo/unsloth_compiled_cache/
 Onsite/dpo/__pycache__/

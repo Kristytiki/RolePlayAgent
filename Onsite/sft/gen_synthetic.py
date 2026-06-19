@@ -36,7 +36,7 @@ from pydantic import BaseModel, Field, ValidationError
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
 log = logging.getLogger("gen_synth")
 
-OPUS_MODEL_ID = "anthropic.claude-opus-4-8"
+OPUS_MODEL_ID = os.environ.get("OPUS_MODEL_ID", "us.anthropic.claude-opus-4-8")
 AWS_REGION = os.environ.get("AWS_REGION", "us-west-2")
 
 # ---- Character pool ------------------------------------------------------

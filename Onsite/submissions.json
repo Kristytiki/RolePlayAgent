@@ -29,9 +29,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7852,
-    "num_wins": 2378,
-    "win_ratio": 0.30285277636271013,
+    "num_battles": 8603,
+    "num_wins": 2615,
+    "win_ratio": 0.30396373358130885,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -66,9 +66,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7804,
-    "num_wins": 1945,
-    "win_ratio": 0.24923116350589442,
+    "num_battles": 8569,
+    "num_wins": 2135,
+    "win_ratio": 0.24915392694596802,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -103,9 +103,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7786,
-    "num_wins": 1527,
-    "win_ratio": 0.19612124325712818,
+    "num_battles": 8567,
+    "num_wins": 1681,
+    "win_ratio": 0.19621804599042839,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -140,9 +140,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7827,
-    "num_wins": 2299,
-    "win_ratio": 0.2937268429794302,
+    "num_battles": 8650,
+    "num_wins": 2527,
+    "win_ratio": 0.2921387283236994,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -177,9 +177,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7681,
-    "num_wins": 2278,
-    "win_ratio": 0.2965759666710064,
+    "num_battles": 8419,
+    "num_wins": 2522,
+    "win_ratio": 0.29956051787623234,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -214,9 +214,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7719,
-    "num_wins": 2661,
-    "win_ratio": 0.344733773804897,
+    "num_battles": 8527,
+    "num_wins": 2948,
+    "win_ratio": 0.3457253430280286,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -251,9 +251,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7854,
-    "num_wins": 2508,
-    "win_ratio": 0.31932773109243695,
+    "num_battles": 8627,
+    "num_wins": 2769,
+    "win_ratio": 0.3209690506549206,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -288,9 +288,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7787,
-    "num_wins": 2129,
-    "win_ratio": 0.27340439193527677,
+    "num_battles": 8548,
+    "num_wins": 2332,
+    "win_ratio": 0.27281235376696306,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -362,9 +362,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7828,
-    "num_wins": 2087,
-    "win_ratio": 0.2666070516096065,
+    "num_battles": 8560,
+    "num_wins": 2279,
+    "win_ratio": 0.26623831775700935,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -438,9 +438,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 7602,
-    "num_wins": 2398,
-    "win_ratio": 0.31544330439358065,
+    "num_battles": 8390,
+    "num_wins": 2634,
+    "win_ratio": 0.3139451728247914,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -477,9 +477,9 @@
     },
     "status": "completed_old_max128",
     "note": "First fire — ran successfully on Chai (status=torndown), but Chai later tightened validation so re-submission with same params would now be rejected.",
-    "num_battles": 7612,
-    "num_wins": 2505,
-    "win_ratio": 0.3290856542301629,
+    "num_battles": 8417,
+    "num_wins": 2769,
+    "win_ratio": 0.32897707021504097,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -516,9 +516,9 @@
       "frequency_penalty": 0.3
     },
     "status": "active",
-    "num_battles": 7559,
-    "num_wins": 2203,
-    "win_ratio": 0.29144066675486174,
+    "num_battles": 8332,
+    "num_wins": 2401,
+    "win_ratio": 0.28816610657705233,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -556,9 +556,9 @@
       "top_p": 0.9
     },
     "status": "active",
-    "num_battles": 7497,
-    "num_wins": 2421,
-    "win_ratio": 0.32292917166866747,
+    "num_battles": 8348,
+    "num_wins": 2674,
+    "win_ratio": 0.3203162434115956,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -593,9 +593,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7744,
-    "num_wins": 2376,
-    "win_ratio": 0.3068181818181818,
+    "num_battles": 8567,
+    "num_wins": 2625,
+    "win_ratio": 0.306408310960663,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -632,9 +632,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 7314,
-    "num_wins": 2636,
-    "win_ratio": 0.360404703308723,
+    "num_battles": 8064,
+    "num_wins": 2893,
+    "win_ratio": 0.3587549603174603,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -710,9 +710,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 7659,
-    "num_wins": 2443,
-    "win_ratio": 0.3189711450581016,
+    "num_battles": 8437,
+    "num_wins": 2683,
+    "win_ratio": 0.3180040298684366,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -749,9 +749,9 @@
     },
     "status": "completed_old_max128",
     "note": "First fire — ran successfully on Chai (status=torndown), but Chai later tightened validation so re-submission with same params would now be rejected.",
-    "num_battles": 7496,
-    "num_wins": 2640,
-    "win_ratio": 0.35218783351120597,
+    "num_battles": 8353,
+    "num_wins": 2947,
+    "win_ratio": 0.35280737459595357,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -901,9 +901,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 7686,
-    "num_wins": 2195,
-    "win_ratio": 0.285584179026802,
+    "num_battles": 8453,
+    "num_wins": 2419,
+    "win_ratio": 0.28617059032296227,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -975,9 +975,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 3445,
-    "num_wins": 932,
-    "win_ratio": 0.27053701015965165,
+    "num_battles": 4259,
+    "num_wins": 1152,
+    "win_ratio": 0.2704860295844095,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1014,9 +1014,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 3367,
-    "num_wins": 975,
-    "win_ratio": 0.28957528957528955,
+    "num_battles": 4107,
+    "num_wins": 1185,
+    "win_ratio": 0.2885317750182615,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1090,9 +1090,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 3506,
-    "num_wins": 1184,
-    "win_ratio": 0.3377067883628066,
+    "num_battles": 4292,
+    "num_wins": 1439,
+    "win_ratio": 0.3352749301025163,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1129,9 +1129,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 3439,
-    "num_wins": 1322,
-    "win_ratio": 0.38441407385867987,
+    "num_battles": 4227,
+    "num_wins": 1648,
+    "win_ratio": 0.3898746155665957,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1168,9 +1168,9 @@
     },
     "status": "active_max80",
     "note": "Resubmit of *_long with max_output_tokens=80 to satisfy newer Chai validation.",
-    "num_battles": 3411,
-    "num_wins": 1150,
-    "win_ratio": 0.33714453239519204,
+    "num_battles": 4220,
+    "num_wins": 1402,
+    "win_ratio": 0.33222748815165876,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1244,9 +1244,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 2571,
-    "num_wins": 670,
-    "win_ratio": 0.26059898872034226,
+    "num_battles": 3366,
+    "num_wins": 894,
+    "win_ratio": 0.26559714795008915,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1283,9 +1283,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 2609,
-    "num_wins": 781,
-    "win_ratio": 0.2993484093522422,
+    "num_battles": 3366,
+    "num_wins": 997,
+    "win_ratio": 0.29619726678550207,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1320,9 +1320,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 2683,
-    "num_wins": 723,
-    "win_ratio": 0.2694744688781215,
+    "num_battles": 3497,
+    "num_wins": 928,
+    "win_ratio": 0.26537031741492706,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1357,9 +1357,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 2399,
-    "num_wins": 666,
-    "win_ratio": 0.27761567319716546,
+    "num_battles": 3145,
+    "num_wins": 848,
+    "win_ratio": 0.26963434022257554,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1396,9 +1396,9 @@
       "best_of": 16
     },
     "status": "active",
-    "num_battles": 2457,
-    "num_wins": 709,
-    "win_ratio": 0.28856328856328856,
+    "num_battles": 3137,
+    "num_wins": 911,
+    "win_ratio": 0.2904048453936882,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1433,9 +1433,9 @@
     },
     "gen_overrides": {},
     "status": "active",
-    "num_battles": 2327,
-    "num_wins": 572,
-    "win_ratio": 0.24581005586592178,
+    "num_battles": 3009,
+    "num_wins": 727,
+    "win_ratio": 0.24160850780990362,
     "celo_rating": 9999.0,
     "chai_status": "deployed",
     "family_friendly_score": 0.0
@@ -1469,10 +1469,10 @@
       "truncate_by_message": true
     },
     "gen_overrides": {},
-    "num_battles": 773,
-    "num_wins": 213,
-    "win_ratio": 0.2755498059508409,
-    "celo_rating": 0.0,
+    "num_battles": 1438,
+    "num_wins": 397,
+    "win_ratio": 0.2760778859527121,
+    "celo_rating": 9999.0,
     "chai_status": "deployed"
   },
   {
@@ -1506,10 +1506,10 @@
     "gen_overrides": {
       "best_of": 16
     },
-    "num_battles": 793,
-    "num_wins": 242,
-    "win_ratio": 0.3051702395964691,
-    "celo_rating": 0.0,
+    "num_battles": 1470,
+    "num_wins": 417,
+    "win_ratio": 0.2836734693877551,
+    "celo_rating": 9999.0,
     "chai_status": "deployed"
   },
   {
@@ -1541,9 +1541,9 @@
       "truncate_by_message": true
     },
     "gen_overrides": {},
-    "num_battles": 145,
-    "num_wins": 47,
-    "win_ratio": 0.32413793103448274,
+    "num_battles": 777,
+    "num_wins": 236,
+    "win_ratio": 0.30373230373230375,
     "celo_rating": 0.0,
     "chai_status": "deployed"
   },
@@ -1578,9 +1578,9 @@
     "gen_overrides": {
       "best_of": 16
     },
-    "num_battles": 120,
-    "num_wins": 39,
-    "win_ratio": 0.325,
+    "num_battles": 818,
+    "num_wins": 242,
+    "win_ratio": 0.29584352078239606,
     "celo_rating": 0.0,
     "chai_status": "deployed"
   },
@@ -1613,11 +1613,11 @@
       "truncate_by_message": true
     },
     "gen_overrides": {},
-    "num_battles": 0,
-    "num_wins": 0,
-    "win_ratio": 0.0,
+    "num_battles": 403,
+    "num_wins": 108,
+    "win_ratio": 0.2679900744416873,
     "celo_rating": 0.0,
-    "chai_status": "pending"
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:40:27",
@@ -1648,11 +1648,11 @@
       "truncate_by_message": true
     },
     "gen_overrides": {},
-    "num_battles": 0,
-    "num_wins": 0,
-    "win_ratio": 0.0,
+    "num_battles": 460,
+    "num_wins": 118,
+    "win_ratio": 0.2565217391304348,
     "celo_rating": 0.0,
-    "chai_status": "pending"
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:40:29",
@@ -1683,11 +1683,11 @@
       "truncate_by_message": true
     },
     "gen_overrides": {},
-    "num_battles": 0,
-    "num_wins": 0,
-    "win_ratio": 0.0,
+    "num_battles": 439,
+    "num_wins": 123,
+    "win_ratio": 0.28018223234624146,
     "celo_rating": 0.0,
-    "chai_status": "pending"
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:59:00",
@@ -1717,7 +1717,12 @@
       "response_template": "<|im_start|>assistant\n{bot_name}:",
       "truncate_by_message": true
     },
-    "gen_overrides": {}
+    "gen_overrides": {},
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:59:01",
@@ -1747,7 +1752,12 @@
       "response_template": "<|im_start|>assistant\n{bot_name}:",
       "truncate_by_message": true
     },
-    "gen_overrides": {}
+    "gen_overrides": {},
+    "num_battles": 2,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:59:02",
@@ -1779,7 +1789,12 @@
     },
     "gen_overrides": {
       "best_of": 16
-    }
+    },
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:59:04",
@@ -1811,7 +1826,12 @@
     },
     "gen_overrides": {
       "best_of": 16
-    }
+    },
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
   },
   {
     "ts": "2026-06-19T22:59:14",
@@ -1841,6 +1861,11 @@
       "response_template": "<|im_start|>assistant\n{bot_name}:",
       "truncate_by_message": true
     },
-    "gen_overrides": {}
+    "gen_overrides": {},
+    "num_battles": 0,
+    "num_wins": 0,
+    "win_ratio": 0.0,
+    "celo_rating": 0.0,
+    "chai_status": "deployed"
   }
 ]
