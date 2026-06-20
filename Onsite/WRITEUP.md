@@ -7,75 +7,68 @@
 
 ---
 
-## 1. Headline submission
-
-### 🥇 Best — Qwen3-4B-Anime-step100 + best_of=64 + long output
+## 1. Best submission
 
 | Field | Value |
 |---|---|
 | **Submission ID** | `zheqiwu-qwen3-4b-anime-s_1701_v3` |
 | **Console URL** | https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_1701_v3 |
 | **HF model** | https://huggingface.co/ZheqiWu/Qwen3-4B-Anime-step100 |
-| **Win-rate** | **39.25%** (9,720 battles, deployed) |
-| **Base model** | `Qwen/Qwen3-4B-Instruct-2507` |
-| **Fine-tune data** | 100-record Sonnet-4.6 anime ShareGPT corpus (`sft_chai_anime.json`) |
-| **Method** | LoRA r=32 (alpha=64), 100 steps, lr=1e-4, cosine schedule, merged 16-bit |
-| **Gen params** | `best_of=64, max_output_tokens=80, stopping_words=[]` (no early stop on `\n`), defaults otherwise |
+| **Win-rate** | **39.25%** (9,720 battles) |
+| **Baseline** | 30.92% (`qwen-qwen2-5-3b-instruct_v18`, 10,486 battles) |
+| **Δ vs baseline** | **+8.33 pp** (≈ +27% relative) |
 
-This fine-tuned 4B beats the strongest **un-fine-tuned** submission we tried —
-Qwen3-30B-A3B + long output (`qwen-qwen3-30b-a3b-inst_16638_v7`, 38.90%, 10,144
-battles) — by **+0.35 pp** while using a base model 7× smaller in active
-parameters and shipping with our own LoRA delta merged in.
+### Each parameter, what it means
 
-#### Lift over baseline
+**Training:**
 
-The original onsite baseline submission was `qwen-qwen2-5-3b-instruct_v18` —
-stock `Qwen/Qwen2.5-3B-Instruct` with the default Chaiverse generation
-parameters Chai shipped in the onsite kit:
-
-| | Submission | Win-rate | Battles |
-|---|---|---|---|
-| Baseline | `qwen-qwen2-5-3b-instruct_v18` | **30.92%** | 10,486 |
-| Best | `zheqiwu-qwen3-4b-anime-s_1701_v3` | **39.25%** | 9,720 |
-| **Δ** | | **+8.33 pp** (≈ +27% relative) | |
-
-Sample sizes are large enough on both sides (~10k battles each) that the
-delta is statistically meaningful, not noise.
-
-**Strongest single fine-tuned variant we shipped — and the only model in the
-top-3 that uses any fine-tuning at all.** Beats:
-
-- every base-model submission ≤4B (Qwen3-4B-long: 35.31%, +3.94 pp lift)
-- the un-fine-tuned `Qwen3-30B-A3B`-long MoE submission (38.90%, +0.35 pp lift)
-  using a base 7× smaller in active-parameter terms
-
-The lift came from three independent design decisions stacking:
-
-1. **Base swap** Qwen2.5-3B → Qwen3-4B-Instruct-2507 (newer architecture, +~1 pp on its own at default gen params).
-2. **Fine-tune** with 100 schema-matched records (anime v1) at `lr=1e-4, r=32, 100 steps` (+~3-4 pp over Qwen3-4B base).
-3. **Generation tweaks**: `best_of=64` (reranker on 64 candidates) + `max_output=80, stopping_words=[]` (allow multi-sentence replies). On its own this combo lifts the same SFT model from 31.81% (`step100` default gen) to 39.25% — **+7.44 pp from inference-time settings alone**.
-
-#### SFT submissions ≥30% with ≥1k battles (current ledger)
-
-| Slug | Win | Battles |
+| Parameter | Value | Meaning |
 |---|---|---|
-| `qwen3_4b_anime_step100_bo64_long` ⭐ | **39.25%** | 9,720 |
-| `qwen3_4b_anime_step60_bo64_long` | 38.52% | 9,969 |
-| `qwen3_4b_anime_step60_bo64_v2` | 35.52% | 9,818 |
-| `qwen3_4b_anime_step60_bo128` | 35.31% | 9,994 |
-| `qwen3_4b_anime_step60_bo64_tight` | 35.28% | 9,836 |
-| `qwen3_4b_anime_step100_long` | 35.27% | 10,147 |
-| `qwen3_4b_anime_step60_bo64` | 34.91% | 10,207 |
-| `qwen3_4b_anime_step60_bo32` | 34.31% | 10,174 |
-| `qwen3_4b_anime_step60_long` | 34.15% | 10,087 |
-| `qwen3_4b_anime_step60_bo16` | 33.90% | 10,212 |
-| `qwen3b_synth_step60_bo32` | 31.34% | 9,842 |
-| `qwen3b_pippa_r16_bo16` | 30.57% | 10,103 |
-| `llama32_3b_anime_step100` | 30.55% | 10,193 |
+| Base model | `Qwen/Qwen3-4B-Instruct-2507` | Pretrained backbone we fine-tune on top of. 4B dense Qwen3 (Sept 2025), already instruction-tuned. |
+| Fine-tune data | 100 records of `sft_chai_anime.json` | 100 Sonnet-4.6-generated anime/fandom/OC ShareGPT conversations, schema-matched to Chai inference (single-line, `*action*`, no `[thought]`, no name prefix). |
+| LoRA `r` | 32 | Rank of the low-rank adapter matrices (`ΔW = A·B`). r=32 means each module learns ~30M trainable params (≈1.9% of base). |
+| LoRA `alpha` | 64 | Scale factor — effective LoRA contribution at inference is `(alpha/r) · ΔW = 2 · ΔW`. |
+| Learning rate | `1e-4` | Lower than the default `2e-4` to avoid CoSER's over-shoot pattern (loss kept dropping but win-rate fell). |
+| Steps | 100 | Cosine schedule with `warmup_steps=10`. step100 narrowly beat step60 at ≥9k battles (39.25% vs 38.52%). |
+| Effective batch | 8 | per-device 2 × grad-accum 4. |
+| `max_seq_length` | 2048 | Matches Chai's `max_input_tokens=2048`; longer context wasted at inference. |
+| Loss masking | assistant turns only | `train_on_responses_only` via ChatML markers (`<\|im_start\|>user\n` ↔ `<\|im_start\|>assistant\n`). The model only learns to predict character replies, not the user/system text. |
 
-Full per-submission ledger (slug, gen-params, formatter, win-rate, num_battles)
-is in `submissions.json` (machine-readable) and `submissions.xlsx`
-(human-readable, color-coded by Dim and leaderboard rank).
+**Inference (generation_params at submit time):**
+
+| Parameter | Value | Meaning |
+|---|---|---|
+| `best_of` | **64** | vLLM samples 64 candidate replies per turn; Chai's reranker picks the best one. The single highest-leverage knob — `bo=8 → bo=64` adds ~+5 pp on a fixed SFT model. |
+| `max_output_tokens` | **80** | Maximum tokens emitted per reply. Chai validation hard-caps at 80; default was 64. |
+| `stopping_words` | **`[]`** (empty) | Default was `["\n"]` (truncate at first newline → forces single-line replies). Removing it lets the model write 1-2 sentence replies, which Chai users prefer. |
+| `temperature` | 1.0 | Sampling temperature. |
+| `top_p` | 1.0 | Nucleus sampling threshold (effectively off). |
+| `top_k` | 40 | Restricts sampling to top-40 tokens at each step. |
+| `min_p`, `presence_penalty`, `frequency_penalty` | 0.0 | All defaults. |
+| `max_input_tokens` | 2048 | Same value the model was fine-tuned at. |
+
+The `best_of=64 + max_output=80 + stopping_words=[]` combination contributes
+**+7.44 pp** on top of the base SFT model (`qwen3_4b_anime_step100` default
+gen = 31.81% vs `bo64_long` = 39.25%) — the largest single lift in the
+portfolio.
+
+**Formatter (Chai bot template, ChatML):**
+
+```python
+{
+  "memory_template":   "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template":   "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template":      "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template":     "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": True,
+}
+```
+
+`response_template` ends with `{bot_name}:` so Chai prepends the character
+name itself at inference. Training data must therefore strip the `Name: `
+prefix from assistant turns — otherwise the model emits the name a second
+time and you get `"Aria: Aria: ..."`.
 
 ---
 
@@ -202,21 +195,31 @@ ChatML markers.
 
 ### 6.1 Datasets (the central design decision)
 
-| ID | Dataset | Volume | Generator / Source | Style | File |
-|---|---|---|---|---|---|
-| (a) | **CoSER** | 30k of 305k | `Neph0s/CoSER`, distilled from 771 books | Literary, `[thought] (action)` | `sft_chai_aligned.json` |
-| (b) | **PIPPA** | 1,944 of 16,832 (filtered) | `PygmalionAI/PIPPA` (character.ai user dump) | Real chat RP, `*action*` | `sft_chai_pippa.json` |
-| (c) | **Hieunguyenminh** | 5,000 of 5,755 | `Hieunguyenminh/roleplay` HF dataset | QA-style "lecture" voice | `sft_chai_hieu.json` |
-| (d) | **anime v1** ⭐ | 100 | Claude Sonnet 4.6, 8-line prompt | Single-line ≤50 tok, anime/RP | `sft_chai_anime.json` |
-| (e) | **anime v2** | 1,000 | Claude Sonnet 4.6, onsite-style few-shot | 30-50 turn cinematic, weighted msgs | `sft_chai_anime_v2.json` |
-| (f) | **anime v3_gpt** | 953 of 1,000 | GPT-OSS-120B (Bedrock), same prompt as v2 | Same shape as v2 | `sft_chai_anime_v3_gpt.json` |
-| (g) | **synth** | 1,000 | Bedrock `claude-opus-4-8`, schema-controlled | Casual texting, 24 personas | `sft_chai_synth.json` |
+All 7 datasets we trained against, in one place. Every dataset is preprocessed
+to the same Chai-aligned ShareGPT format (single-line assistant targets, no
+`{name}:` prefix, ≤80 tokens per turn).
 
-**Preprocessing (universal across all sources):**
-1. Strip leading `"<character>: "` from each assistant turn (Chai's bot_template prepends it at inference).
+| ID | Dataset | Origin | Generator | Format / style | Volume (raw → kept) | File | Preprocess script | Best win-rate observed |
+|---|---|---|---|---|---|---|---|---|
+| (a) | **CoSER** | `Neph0s/CoSER` (distilled from 771 books) | — (real text) | Literary `[thought] (action) "speech"`, multi-paragraph | 305,134 → 30,000 (random subset, seed 42) | `sft_chai_aligned.json` | `data/preprocess_coser.py` | 27.2% (Qwen2.5-3B step30) — **below baseline** |
+| (b) | **PIPPA** | `PygmalionAI/PIPPA` (character.ai user dump) | — (real users) | Real chat RP, `*action*` convention | 16,832 → 1,944 (category whitelist + casual filter) | `sft_chai_pippa.json` | `data/preprocess_pippa.py` | 30.6% (Qwen2.5-3B r=16 + bo16) |
+| (c) | **Hieunguyenminh** | `Hieunguyenminh/roleplay` HF dataset | — | QA-style "lecture" voice (Indeed!, Ah my friend...) | 5,755 → 5,000 | `sft_chai_hieu.json` | not trained in final round |
+| (d) | **anime v1** ⭐ | self-generated | Claude Sonnet 4.6 | 8-line prompt, single-line ≤50 tok, anime tropes + fandom canon + dark OC | 100 (100 character specs × 1 conversation each, 100/100 valid) | `sft_chai_anime.json` | n/a (workflow-generated) | **39.25%** (Qwen3-4B step100 + bo64 + long) |
+| (e) | **anime v2** | self-generated | Claude Sonnet 4.6 | Onsite-style few-shot (Hogwarts/Sylus), 30-50 turn cinematic, OpenAI `messages` w/ `weight=0/1` | 1,000 (100 base × 10 scenarios; 4 batches × 250-way concurrency) | `sft_chai_anime_v2.json` | n/a | 33.6% (Qwen3-4B step100) |
+| (f) | **anime v3_gpt** | self-generated | GPT-OSS-120B (Bedrock) | Same prompt as v2 | 1,000 → 953 (47 dropped to schema drift) | `sft_chai_anime_v3_gpt.json` | n/a | 31.0% (Qwen3-4B step100) |
+| (g) | **synth** | self-generated | Bedrock `us.anthropic.claude-opus-4-8` | Schema-controlled (`SCHEMA.md`): 24 personas × 20 openers, 4 user + 4 assistant turns, 15-40 tok, *action* only, ~30% emoji | 1,000 (async concurrency 16; ~$25 / 8 min) | `sft_chai_synth.json` | `data/gen_synthetic.py` | 31.3% (Qwen3-4B step60 + bo32) |
+
+**Universal preprocessing** (applied to every dataset before SFT):
+
+1. Strip leading `"<character>: "` from each assistant turn (Chai's `bot_template` prepends it at inference).
 2. Collapse `\n\n` and internal newlines to single space (Chai uses `stopping_words=['\n']`).
 3. Drop empty / multi-line / template-leftover turns.
 4. Cap each turn at ~600 chars; cap conversations at 16-20 turns.
+
+**Generation pipelines for the 4 self-generated datasets:**
+- **anime v1 / v2**: Sonnet 4.6 fanned out across N character specs via a workflow (one subagent per spec, JSON-schema-validated). v1 = 100 specs simple prompt; v2 = 1000 specs with onsite-style few-shot (`assets/onsite.example`).
+- **anime v3_gpt**: same v2 prompt sent to GPT-OSS-120B via Bedrock `boto3 invoke_model`, async concurrency 16.
+- **synth**: `data/gen_synthetic.py` — Bedrock Opus 4.8, schema-controlled per `data/SCHEMA.md` (24 personas × 20 openers, strict per-turn rules: ≤40 tok, single-line, *action* only, no `[thought]`, no name prefix, ~30% emoji).
 
 ### 6.2 SFT result summary
 
