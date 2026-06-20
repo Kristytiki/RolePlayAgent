@@ -16,7 +16,7 @@ from datasets import Dataset
 from trl import SFTTrainer
 from transformers import TrainingArguments, TrainerCallback
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).parent.parent  # sft/  (this script lives in sft/core/)
 # Switch DATASET via env. RUN_TAG appended to all output dirs so multiple
 # runs don't overwrite each other. BASE_MODEL controls which base to fine-tune
 # (default Qwen2.5-3B; set to "qwen3-4b" for ensemble runs).

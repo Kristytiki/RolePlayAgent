@@ -127,10 +127,10 @@ response_template: <start_of_turn>model\n{bot_name}:
 - `Onsite/onsite_submit.py` — single-shot submit (legacy)
 - `Onsite/submit_batch.py` — portfolio submitter (Dim A/B/C); appends to `submissions.json` + `SUBMISSIONS.md`
 - `Onsite/SUBMISSIONS.md` — auto-generated log: slug, submission_id, URL, full gen_params + formatter for each fire
-- `Onsite/sft/download.sh` — pull Qwen2.5-3B-Instruct + CoSER ShareGPT
-- `Onsite/sft/preprocess.py` — strip leading `Name: ` + collapse newlines
-- `Onsite/sft/setup_env.sh` — uv venv + torch + Unsloth
-- `Onsite/sft/train.py` — Unsloth LoRA r=32, 1 epoch, save merged 16-bit
+- `Onsite/sft/core/download.sh` — pull Qwen2.5-3B-Instruct + CoSER ShareGPT
+- `Onsite/sft/data/preprocess_coser.py` — strip leading `Name: ` + collapse newlines
+- `Onsite/sft/core/setup_env.sh` — uv venv + torch + Unsloth
+- `Onsite/sft/core/train.py` — Unsloth LoRA r=32, 1 epoch, save merged 16-bit
 
 ## Run order
 

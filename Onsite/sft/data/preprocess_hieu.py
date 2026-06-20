@@ -20,7 +20,7 @@ import pandas as pd
 
 random.seed(42)
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).parent.parent  # sft/
 SRC = HERE / "assets/Hieunguyenminh-roleplay/data/train-00000-of-00001.parquet"
 OUT = HERE / "assets/sft_chai_hieu.json"
 N_KEEP = int(os.environ.get("N_KEEP", "5000"))

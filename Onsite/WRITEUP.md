@@ -19,18 +19,34 @@
 | **Base model** | `Qwen/Qwen3-30B-A3B-Instruct-2507` (MoE, ~3B active) |
 | **Method** | No SFT; off-the-shelf base + ChatML formatter + `max_output_tokens=80, stopping_words=[]` |
 
-### Best fine-tuned submission — Qwen3-4B-Anime + best_of=64
+### Best fine-tuned submission — Qwen3-4B-Anime-step100 + best_of=64 + long output
 
 | Field | Value |
 |---|---|
-| **Submission ID** | `zheqiwu-qwen3-4b-anime-step60_v5` |
-| **Console URL** | https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v5 |
-| **HF model** | https://huggingface.co/ZheqiWu/Qwen3-4B-Anime-step60 |
-| **Win-rate** | **36.4%** (1,730 battles) |
+| **Submission ID** | `zheqiwu-qwen3-4b-anime-s_1701_v3` |
+| **Console URL** | https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_1701_v3 |
+| **HF model** | https://huggingface.co/ZheqiWu/Qwen3-4B-Anime-step100 |
+| **Win-rate** | **40.3%** (640 battles, deployed) |
 | **Base model** | `Qwen/Qwen3-4B-Instruct-2507` |
 | **Fine-tune data** | 100-record Sonnet-4.6 anime ShareGPT corpus (`sft_chai_anime.json`) |
-| **Method** | LoRA r=16 SFT, 60 steps, lr=1e-4, merged 16-bit |
-| **Gen params** | `best_of=64`, others default |
+| **Method** | LoRA r=32 (alpha=64), 100 steps, lr=1e-4, cosine schedule, merged 16-bit |
+| **Gen params** | `best_of=64, max_output_tokens=80, stopping_words=[]` (no early stop on `\n`), defaults otherwise |
+
+**Strongest single fine-tuned variant we shipped.** Beats every base-model
+submission ≤4B (Qwen3-4B-long at 35.3%, Qwen3-30B-A3B-long at 38.9%) using a
+3.4B parameter base + 100 records of distribution-matched data. The
+combination of `best_of=64` (giving the reranker more candidates) and
+`stopping_words=[]` + `max_output=80` (allowing 1-2 sentence replies instead
+of single-line truncation) on a Chai-style anime SFT proved to be the winning
+recipe.
+
+#### Earlier strong baselines (before bo64+long combo)
+
+| Slug | Win | Battles | Notes |
+|---|---|---|---|
+| `qwen3_4b_anime_step60_bo64` | 36.5% | 2,262 | step60 instead of step100 |
+| `qwen3_4b_anime_step100_long` | 35.6% | 2,235 | long output but bo=8 |
+| `qwen3_4b_anime_step60_long` | 34.2% | 2,269 | step60 + long |
 
 Full per-submission ledger (slug, gen-params, formatter, win-rate, num_battles)
 is in `submissions.json` (machine-readable) and `submissions.xlsx`
@@ -201,9 +217,10 @@ For Chai's preference signal, only `win_ratio` matters.
 
 ### 6.4 anime v1 generation — exact prompt and pipeline (best-model recipe)
 
-This is the dataset that produced the strongest single fine-tune
-(`Qwen3-4B-Anime-step60` + `best_of=64` = **36.4% win-rate**). Reproducing
-here in full because it's the load-bearing piece of the result.
+This is the dataset that produced the strongest fine-tune we shipped:
+`Qwen3-4B-Anime-step100` + `best_of=64` + `max_output_tokens=80, stopping_words=[]`
+= **40.3% win-rate** (`zheqiwu-qwen3-4b-anime-s_1701_v3`, 640 battles).
+Reproducing here in full because it's the load-bearing piece of the result.
 
 **Code:** `Onsite/dpo/assets/anime_gen_workflow.js` — a workflow script that
 fans out 100 subagents (one per character spec). Each subagent is asked to
@@ -316,17 +333,49 @@ Return ONLY the JSON object with system + turns. No prose, no markdown.
 - Asks for **persona-specific scenario hooks** instead of generic "Hello!"
   openers, so each conversation looks like a different roleplay setting.
 
-**Training recipe (best:** `Qwen3-4B-Anime-step60`):
+**Training recipe** (best at `step100` and `step60`):
 
 ```bash
 cd Onsite/sft && source .venv/bin/activate
-DATASET=anime BASE_MODEL=qwen3-4b LORA_R=32 LORA_ALPHA=64 LR=1e-4 \
-    MAX_STEPS=60 SNAPSHOT_AT=30,60 \
-    python train.py
+DATASET=anime BASE_MODEL=qwen3-4b \
+    LORA_R=32 LORA_ALPHA=64 LR=1e-4 \
+    MAX_STEPS=100 SNAPSHOT_AT=30,60,100 SAVE_LORA_EVERY=30 \
+    python core/train.py
 ```
 
-Everything else is the universal SFT setup from §6: bf16, 4-bit base,
-batch=2, grad-accum=4, cosine LR, `train_on_responses_only` ChatML masking.
+Other defaults from `core/train.py`:
+- `per_device_batch=2`, `grad_accum=4` (effective batch 8)
+- `max_seq_length=2048` (matches Chai's `max_input_tokens`)
+- `lr_scheduler_type="cosine"`, `warmup_steps=10`
+- `optim="adamw_8bit"`, `weight_decay=0.0`, `bf16=True`
+- 4-bit quantized base via Unsloth
+- `train_on_responses_only` masking via ChatML markers (`<|im_start|>user\n` ↔ `<|im_start|>assistant\n`)
+
+**Submission recipe** (the +4 percentage-point lift on top of the SFT model):
+
+```python
+generation_params = {
+    "temperature": 1.0, "top_p": 1.0, "top_k": 40, "min_p": 0.0,
+    "presence_penalty": 0.0, "frequency_penalty": 0.0,
+    "stopping_words": [],            # ← removed; allow multi-sentence replies
+    "max_input_tokens": 2048,
+    "max_output_tokens": 80,         # ← max Chai allows
+    "best_of": 64,                   # ← reranker picks from 64 candidates
+}
+formatter = QWEN_CHATML  # see §4
+```
+
+Final sequence to ship the best fine-tune:
+
+```bash
+# 1. train (above)
+# 2. push merged 16-bit
+hf upload ZheqiWu/Qwen3-4B-Anime-step100 ../train_model/qwen3-4b-anime-step100 .
+
+# 3. submit (variant qwen3_4b_anime_step100_bo64_long is in submit_batch.py)
+cd .. && uv run --with requests python submit_batch.py \
+    --only qwen3_4b_anime_step100_bo64_long
+```
 
 ---
 
@@ -397,16 +446,20 @@ Onsite/
 ├── submissions.json / .xlsx          # full ledger with win-rate, gen-params, formatter
 ├── SUBMISSIONS.md                    # auto-appended submission log
 ├── sft/
-│   ├── SCHEMA.md                     # data schema design doc
-│   ├── download.sh                   # pull base models + datasets from HF
-│   ├── preprocess.py                 # CoSER → ShareGPT
-│   ├── preprocess_pippa.py           # PIPPA → ShareGPT (category + casual filter)
-│   ├── preprocess_hieu.py            # Hieunguyenminh → ShareGPT
-│   ├── gen_synthetic.py              # Bedrock Opus 4.8 schema-controlled synthesis
-│   ├── setup_env.sh                  # uv venv + torch cu124 + Unsloth (pinned)
-│   ├── train.py                      # Qwen base SFT (DATASET, RUN_TAG, LORA_R, LR env)
-│   ├── train_llama.py                # Llama base SFT
-│   └── run_after_first.sh            # serial watchdog (run B after A finishes)
+│   ├── README.md                     # detailed SFT pipeline doc
+│   ├── core/
+│   │   ├── setup_env.sh              # uv venv + torch cu124 + Unsloth (pinned)
+│   │   ├── download.sh               # pull base models + datasets from HF
+│   │   ├── train.py                  # Unsloth LoRA SFT — env-driven
+│   │   └── ensemble_loras.py         # peft.add_weighted_adapter wrapper
+│   ├── data/
+│   │   ├── SCHEMA.md                 # data schema design doc
+│   │   ├── preprocess_coser.py       # CoSER → ShareGPT
+│   │   ├── preprocess_pippa.py       # PIPPA → ShareGPT (category + casual filter)
+│   │   ├── preprocess_hieu.py        # Hieunguyenminh → ShareGPT
+│   │   └── gen_synthetic.py          # Bedrock Opus 4.8 schema-controlled synthesis
+│   └── runs/
+│       └── ensemble/run.sh           # build 3 ensembles + push HF
 ├── dpo/                               # DPO scaffolding (gen_candidates / build_pairs / train_dpo)
 └── train_model/                       # merged 16-bit checkpoints (safetensors gitignored)
 ```
@@ -418,7 +471,7 @@ export HF_TOKEN=<read+write>
 export CHAI_DEVELOPER_KEY=<your CR_...>
 
 # 1. env
-bash setup_env.sh && source .venv/bin/activate
+bash core/setup_env.sh && source .venv/bin/activate
 
 # 2. data + base
 hf download Qwen/Qwen3-4B-Instruct-2507 --local-dir assets/Qwen3-4B-Instruct-2507
@@ -426,8 +479,9 @@ hf download Qwen/Qwen3-4B-Instruct-2507 --local-dir assets/Qwen3-4B-Instruct-250
 # the resulting json is committed under assets/sft_chai_anime.json.
 
 # 3. train (winning recipe)
-DATASET=anime LORA_R=16 LORA_ALPHA=32 LR=1e-4 MAX_STEPS=60 SNAPSHOT_AT=30,60 \
-  python train.py
+DATASET=anime BASE_MODEL=qwen3-4b LORA_R=32 LORA_ALPHA=64 LR=1e-4 \
+  MAX_STEPS=60 SNAPSHOT_AT=30,60 SAVE_LORA_EVERY=30 \
+  python core/train.py
 
 # 4. push merged
 hf upload <user>/Qwen3-4B-Anime-step60 ../train_model/qwen3-4b-anime-step60

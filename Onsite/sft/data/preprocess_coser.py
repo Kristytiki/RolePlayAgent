@@ -28,7 +28,7 @@ from pathlib import Path
 
 random.seed(42)
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).parent.parent  # sft/
 SRC = HERE / "assets/CoSER/train/sft_conversations_sharegpt.json"
 OUT = HERE / "assets/sft_chai_aligned.json"
 N_KEEP = int(os.environ.get("N_KEEP", "100000"))

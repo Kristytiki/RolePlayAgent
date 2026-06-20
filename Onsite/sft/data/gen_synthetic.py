@@ -13,8 +13,8 @@ Schema (see SCHEMA.md):
 
 Output: ShareGPT format compatible with the SFT train.py loader.
 
-Usage:
-    AWS_PROFILE=bedrock python gen_synthetic.py --n 1000 --concurrency 16 \
+Usage (run from Onsite/sft/):
+    AWS_PROFILE=bedrock python data/gen_synthetic.py --n 1000 --concurrency 16 \
         --out assets/sft_chai_synth.json
 """
 from __future__ import annotations
@@ -26,7 +26,6 @@ import logging
 import os
 import random
 import re
-import sys
 from pathlib import Path
 
 import boto3

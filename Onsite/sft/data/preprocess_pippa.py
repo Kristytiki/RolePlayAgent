@@ -22,7 +22,7 @@ from pathlib import Path
 
 random.seed(42)
 
-HERE = Path(__file__).parent
+HERE = Path(__file__).parent.parent  # sft/
 SRC = HERE / "assets/PIPPA/pippa_deduped.jsonl"
 OUT = HERE / "assets/sft_chai_pippa.json"
 N_KEEP = int(os.environ.get("N_KEEP", "10000"))
@@ -175,7 +175,6 @@ def main():
                     n_drop_casual += 1
                     continue
 
-            prev_role = "assistant" if greeting else None
             turn_count = 0
             casual_failed = False
             for turn in convs:
@@ -203,7 +202,6 @@ def main():
                     messages[-1]["value"] = (messages[-1]["value"].rstrip() + " " + cleaned).strip()
                 else:
                     messages.append({"from": role, "value": cleaned})
-                prev_role = role
                 turn_count += 1
             if casual_failed:
                 n_drop_casual += 1

@@ -377,7 +377,7 @@ def _append_md(slug, sub, sid, url):
     md.append(f"- **url**: {url}")
     md.append(f"- **model_repo**: `{sub['model_repo']}`")
     md.append(f"- **platform**: `{sub['platform']}`")
-    md.append(f"- **win_rate**: _TBD_\n")
+    md.append("- **win_rate**: _TBD_\n")
     md.append("**generation_params**:\n```json")
     md.append(json.dumps(gen, indent=2, ensure_ascii=False))
     md.append("```\n")
