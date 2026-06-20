@@ -1,26 +1,37 @@
 """
-Weight-space LoRA ensemble for Qwen3-4B.
+Weight-space LoRA ensemble — base-model-agnostic.
 
 Combines multiple LoRA adapters trained on the SAME base model into one
-merged checkpoint via peft.add_weighted_adapter, then saves merged 16-bit
-ready to push to HF and submit to Chaiverse.
+merged 16-bit checkpoint via peft.add_weighted_adapter, ready to push to
+HuggingFace and submit to Chaiverse via submit_batch.py.
 
-Hard requirements (enforced):
-- All adapters share the same base model (Qwen3-4B-Instruct-2507).
-- All adapters use identical r / alpha / target_modules.
+Supported combination strategies:
+    linear           weighted sum of deltas (default, safest baseline)
+    ties             drop low-magnitude params, sign-vote, then merge
+    dare_linear      random-drop + rescale + linear
+    dare_ties        DARE pruning + TIES sign-voting
+    magnitude_prune  keep top-K |delta| params per adapter
 
-Usage:
+Hard requirements (enforced via adapter_config.json check):
+- Identical base_model_name_or_path across all adapters.
+- Identical LoRA r / alpha.
+- Identical target_modules list.
+
+Usage (run from Onsite/sft/):
     cd Onsite/sft && source .venv/bin/activate
 
-    # 3-way equal blend, linear merge, of anime+pippa+synth at step 60:
-    python ensemble_loras.py \
-      --base assets/Qwen3-4B-Instruct-2507 \
-      --adapter anime=assets/qwen3-4b-anime-lora/step60 \
-      --adapter pippa=assets/qwen3-4b-pippa-lora/step60 \
-      --adapter synth=assets/qwen3-4b-synth-lora/step60 \
-      --weights 0.5,0.3,0.2 \
-      --combination linear \
-      --out ../train_model/qwen3-4b-ensemble-linear-v1
+    # 3-way blend at step60, linear merge, anime-heavy weighting:
+    python core/ensemble_loras.py \\
+      --base assets/Qwen3-4B-Instruct-2507 \\
+      --adapter anime=assets/qwen3-4b-anime-lora/step60 \\
+      --adapter pippa=assets/qwen3-4b-pippa-lora/step60 \\
+      --adapter synth=assets/qwen3-4b-synth-lora/step60 \\
+      --weights 0.5,0.25,0.25 \\
+      --combination linear \\
+      --out ../train_model/qwen3-4b-ens-linear-animeheavy
+
+The `runs/ensemble/run.sh` wrapper builds the canonical 3-ensemble batch
+(linear-animeheavy, ties-animeheavy, linear-equal) and pushes to HF.
 """
 from __future__ import annotations
 

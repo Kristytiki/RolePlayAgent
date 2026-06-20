@@ -1,14 +1,23 @@
 """
 Batch-submit a portfolio of model variants to Chaiverse for parallel eval.
 
-Each variant = (label, model_repo, formatter, gen_params override).
-Per-base formatter matters: Qwen uses ChatML, Llama-3.x uses header_id, Gemma uses
-start_of_turn/model. Wrong template tanks win rate.
+Each entry in VARIANTS is `(slug, model_repo, formatter, gen_param_overrides)`:
+- slug                      stable id used in submissions.json + xlsx
+- model_repo                HF path Chaiverse will pull
+- formatter                 per-family chat template (QWEN_CHATML / LLAMA31_HEADERED / GEMMA_TURNS)
+- gen_param_overrides       dict merged on top of DEFAULT_GEN
+
+Wrong template tanks win-rate, so always pair the formatter with its
+matching base family.
+
+Each successful submit appends an entry (with full gen_params + formatter) to:
+- submissions.json   machine-readable ledger (used by the chaiverse-winrate skill)
+- SUBMISSIONS.md     human-readable per-submission append log
 
 Usage:
-    HF_TOKEN=hf_xxx python submit_batch.py
-    HF_TOKEN=hf_xxx python submit_batch.py --only qwen25_3b llama32_3b
-    HF_TOKEN=hf_xxx python submit_batch.py --dry      # print, don't POST
+    CHAI_DEVELOPER_KEY=CR_... HF_TOKEN=hf_... python submit_batch.py
+    python submit_batch.py --only qwen3_4b_anime_step100_bo64_long
+    python submit_batch.py --dry         # print, don't POST
 """
 import argparse
 import json

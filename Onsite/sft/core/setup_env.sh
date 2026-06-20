@@ -3,7 +3,9 @@
 # Assumes nvidia-smi works (driver + CUDA already installed).
 set -euo pipefail
 
-cd "$(dirname "$0")"
+# Always operate from sft/ (one level up from this script) so the venv lives
+# at sft/.venv, matching what every train/download invocation expects.
+cd "$(dirname "$0")/.."
 
 if ! command -v nvidia-smi >/dev/null 2>&1; then
   echo "ERROR: nvidia-smi missing — install NVIDIA driver first."

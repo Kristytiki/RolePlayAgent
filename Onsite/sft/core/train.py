@@ -1,10 +1,31 @@
 """
-Unsloth + LoRA SFT for Qwen2.5-3B-Instruct on CoSER (preprocessed).
+Unsloth + LoRA SFT — env-driven for any (base, dataset) combo.
 
-Run after download.sh + preprocess.py.
+Bases:
+    BASE_MODEL=qwen25-3b   (default, Qwen/Qwen2.5-3B-Instruct)
+    BASE_MODEL=qwen3-4b    (Qwen/Qwen3-4B-Instruct-2507)
 
-L4 24GB single GPU. 100k samples, 1 epoch ~= 2-3h.
-Output: ./assets/qwen25-3b-coser-merged/  (16-bit merged checkpoint, ready for HF push)
+Datasets (Chai-aligned ShareGPT, produced by data/preprocess_*.py or gen_synthetic.py):
+    DATASET=coser   sft_chai_aligned.json    (CoSER literary, 30k subset)
+    DATASET=pippa   sft_chai_pippa.json      (PIPPA c.ai dump, filtered)
+    DATASET=hieu    sft_chai_hieu.json       (Hieunguyenminh QA-style)
+    DATASET=synth   sft_chai_synth.json      (Bedrock Opus 4.8 schema-controlled)
+    DATASET=anime   sft_chai_anime.json      (Sonnet 4.6 anime/fandom/OC, best signal)
+
+Hyperparams:
+    LORA_R=32  LORA_ALPHA=64  LR=2e-4  MAX_STEPS=500
+    SNAPSHOT_AT=200,500   SAVE_LORA_EVERY=100
+    RUN_TAG=light         (suffix for output dirs to avoid collisions)
+
+Outputs (all under sft/assets/ or train_model/):
+    LoRA adapter:   sft/assets/{base}-{dataset}{tag}-lora/step{N}/
+    Merged 16bit:   train_model/{base}-{dataset}{tag}-step{N}/   (one per SNAPSHOT_AT)
+                    sft/assets/{base}-{dataset}{tag}-merged/      (final state)
+
+L4 24GB: ~3s/step at r=32 + seq 2048; 100 steps ≈ 5-7 min wall-clock.
+Best fine-tune ship-recipe (see WRITEUP §6.4):
+    DATASET=anime BASE_MODEL=qwen3-4b LORA_R=32 LORA_ALPHA=64 LR=1e-4 \\
+      MAX_STEPS=100 SNAPSHOT_AT=30,60,100 SAVE_LORA_EVERY=30 python core/train.py
 """
 import json
 import os

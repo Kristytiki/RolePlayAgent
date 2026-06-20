@@ -1,7 +1,12 @@
 """
-A simple python script to submit a Hugging Face LLM to the chai evaluation platform, Chaiverse.
-A submission will can take 10-15 minutes to spin up, and 90 minutes to get ~5k-10k preferences. 
-Keep track of your submission-ids.
+Single-shot Chaiverse submitter — kept as the original onsite reference.
+
+For the portfolio submitter (multiple model_repos, formatters, gen-param sweeps,
+full ledger to submissions.{json,xlsx}) use Onsite/submit_batch.py instead.
+
+A submission takes ~10-15 minutes to spin up and ~90 minutes to accumulate
+~5k-10k preference battles. Track each submission_id; use the Chaiverse SDK
+(see ~/.claude/skills/chaiverse-winrate/refresh.py) to pull win-rates.
 """
 import os
 import sys
