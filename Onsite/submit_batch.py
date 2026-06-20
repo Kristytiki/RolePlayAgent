@@ -198,6 +198,19 @@ VARIANTS = [
     ("qwen3b_pippa_r16_bo16",    "ZheqiWu/Qwen2.5-3B-PIPPA-r16", QWEN_CHATML,
         {"best_of": 16}),
 
+    # Synth = 1k schema-controlled samples generated via Bedrock Opus 4.8.
+    # LoRA r=16, lr=1e-4. Snapshot at 60/100/200 to find the sweet step count.
+    # anime experiments showed step30/60 ≈ 34% win-rate; we expect step60 to win here.
+    ("qwen3b_synth_step60",       "ZheqiWu/Qwen2.5-3B-synth-step60",  QWEN_CHATML, {}),
+    ("qwen3b_synth_step60_bo16",  "ZheqiWu/Qwen2.5-3B-synth-step60",  QWEN_CHATML,
+        {"best_of": 16}),
+    ("qwen3b_synth_step60_bo32",  "ZheqiWu/Qwen2.5-3B-synth-step60",  QWEN_CHATML,
+        {"best_of": 32}),
+    ("qwen3b_synth_step100_bo16", "ZheqiWu/Qwen2.5-3B-synth-step100", QWEN_CHATML,
+        {"best_of": 16}),
+    ("qwen3b_synth_step200_bo16", "ZheqiWu/Qwen2.5-3B-synth-step200", QWEN_CHATML,
+        {"best_of": 16}),
+
     # Llama-3.2-3B SFT-then-DPO smoke run (Strategy B: Opus chosen + base sampled rejected, 500 pairs).
     # Mirrors the meta-llama-llama-3-2-3b_30223_v2 stock submission so we can read the win-rate delta.
     ("llama32_3b_dpo_smoke",
@@ -245,6 +258,65 @@ VARIANTS = [
         "ZheqiWu/Qwen3-4B-Anime-step30",  QWEN_CHATML, {"best_of": 16}),
     ("qwen3_4b_anime_step60_bo16",
         "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML, {"best_of": 16}),
+
+    # Qwen3-4B-Anime stacked with the `long` recipe (current leaderboard #1 36-39%
+    # uses max_output=80 + no stopping_words). Zero training cost — same HF model.
+    ("qwen3_4b_anime_step30_long",
+        "ZheqiWu/Qwen3-4B-Anime-step30",  QWEN_CHATML,
+        {"max_output_tokens": 80, "stopping_words": []}),
+    ("qwen3_4b_anime_step60_long",
+        "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML,
+        {"max_output_tokens": 80, "stopping_words": []}),
+    ("qwen3_4b_anime_step100_long",
+        "ZheqiWu/Qwen3-4B-Anime-step100", QWEN_CHATML,
+        {"max_output_tokens": 80, "stopping_words": []}),
+
+    # Push best_of higher on the leading SFT checkpoint — bo=8 → 33.11%, bo=16 → 33.83%.
+    # See if the trend continues at 32/64 (Chai's vllm reranker scales with N).
+    ("qwen3_4b_anime_step60_bo32",
+        "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML, {"best_of": 32}),
+    ("qwen3_4b_anime_step60_bo64",
+        "ZheqiWu/Qwen3-4B-Anime-step60",  QWEN_CHATML, {"best_of": 64}),
+    ("qwen3_4b_anime_step30_bo32",
+        "ZheqiWu/Qwen3-4B-Anime-step30",  QWEN_CHATML, {"best_of": 32}),
+
+    # Gen-param sweep on the leading SFT checkpoint — stack the two known boosters
+    # (bo=64 → 36.96%, long → +4pp) and explore higher bo / tighter sampling.
+    ("qwen3_4b_anime_step60_bo64_long",
+        "ZheqiWu/Qwen3-4B-Anime-step60", QWEN_CHATML,
+        {"best_of": 64, "max_output_tokens": 80, "stopping_words": []}),
+    ("qwen3_4b_anime_step60_bo64_v2",
+        "ZheqiWu/Qwen3-4B-Anime-step60", QWEN_CHATML, {"best_of": 64}),
+    ("qwen3_4b_anime_step100_bo64_long",
+        "ZheqiWu/Qwen3-4B-Anime-step100", QWEN_CHATML,
+        {"best_of": 64, "max_output_tokens": 80, "stopping_words": []}),
+    ("qwen3_4b_anime_step60_bo128",
+        "ZheqiWu/Qwen3-4B-Anime-step60", QWEN_CHATML, {"best_of": 128}),
+    ("qwen3_4b_anime_step60_long_freqpen",
+        "ZheqiWu/Qwen3-4B-Anime-step60", QWEN_CHATML,
+        {"max_output_tokens": 80, "stopping_words": [], "frequency_penalty": 0.3}),
+    ("qwen3_4b_anime_step60_bo64_tight",
+        "ZheqiWu/Qwen3-4B-Anime-step60", QWEN_CHATML,
+        {"best_of": 64, "temperature": 0.8, "top_p": 0.9}),
+    # Llama-3.2-3B + Anime-v2 SFT (1000 Sonnet-synth onsite-schema records,
+    # weight masking on w=0 turns, 850/150 hold-out, LR 5e-5).
+    ("llama32_3b_anime_v2_step100",
+        "ZheqiWu/Llama-3.2-3B-Anime-v2-step100", LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_v2_step200",
+        "ZheqiWu/Llama-3.2-3B-Anime-v2-step200", LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_v2_step300",
+        "ZheqiWu/Llama-3.2-3B-Anime-v2-step300", LLAMA31_HEADERED, {}),
+
+    # Llama-3.2-3B + Anime-v3-GPT SFT (1000 GPT-OSS-120B-synth onsite-schema records,
+    # weight masking on w=0 turns, LR 5e-5). Mirrors the v2-Sonnet pipeline so we can
+    # A/B Sonnet-flavoured vs GPT-flavoured synthetic data on Chai win-rate.
+    ("llama32_3b_anime_v3_gpt_step100",
+        "ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step100", LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_v3_gpt_step200",
+        "ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step200", LLAMA31_HEADERED, {}),
+    ("llama32_3b_anime_v3_gpt_step300",
+        "ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step300", LLAMA31_HEADERED, {}),
+
 ]
 
 # ---- Submitter ----------------------------------------------------------

@@ -17,28 +17,45 @@ from trl import SFTTrainer
 from transformers import TrainingArguments, TrainerCallback
 
 HERE = Path(__file__).parent
-# Switch DATASET via env: DATASET=pippa for the new run, else CoSER (legacy).
-# RUN_TAG appended to all output dirs so multiple runs don't overwrite each other.
+# Switch DATASET via env. RUN_TAG appended to all output dirs so multiple
+# runs don't overwrite each other. BASE_MODEL controls which base to fine-tune
+# (default Qwen2.5-3B; set to "qwen3-4b" for ensemble runs).
 _DATASET = os.environ.get("DATASET", "coser")
 _TAG = os.environ.get("RUN_TAG", "")
 _TAG_SUFFIX = f"-{_TAG}" if _TAG else ""
+_BASE_MODEL = os.environ.get("BASE_MODEL", "qwen25-3b")
+if _BASE_MODEL == "qwen3-4b":
+    BASE = HERE / "assets/Qwen3-4B-Instruct-2507"
+    BASE_PREFIX = "qwen3-4b"
+else:
+    BASE = HERE / "assets/Qwen2.5-3B-Instruct"
+    BASE_PREFIX = "qwen25-3b"
+
 if _DATASET == "pippa":
     DATA = HERE / "assets/sft_chai_pippa.json"
-    OUT_LORA = HERE / f"assets/qwen25-3b-pippa{_TAG_SUFFIX}-lora"
-    OUT_MERGED = HERE / f"assets/qwen25-3b-pippa{_TAG_SUFFIX}-merged"
-    SNAPSHOT_PREFIX = f"qwen25-3b-pippa{_TAG_SUFFIX}"
+    OUT_LORA = HERE / f"assets/{BASE_PREFIX}-pippa{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/{BASE_PREFIX}-pippa{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"{BASE_PREFIX}-pippa{_TAG_SUFFIX}"
 elif _DATASET == "hieu":
     DATA = HERE / "assets/sft_chai_hieu.json"
-    OUT_LORA = HERE / f"assets/qwen25-3b-hieu{_TAG_SUFFIX}-lora"
-    OUT_MERGED = HERE / f"assets/qwen25-3b-hieu{_TAG_SUFFIX}-merged"
-    SNAPSHOT_PREFIX = f"qwen25-3b-hieu{_TAG_SUFFIX}"
+    OUT_LORA = HERE / f"assets/{BASE_PREFIX}-hieu{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/{BASE_PREFIX}-hieu{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"{BASE_PREFIX}-hieu{_TAG_SUFFIX}"
+elif _DATASET == "synth":
+    DATA = HERE / "assets/sft_chai_synth.json"
+    OUT_LORA = HERE / f"assets/{BASE_PREFIX}-synth{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/{BASE_PREFIX}-synth{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"{BASE_PREFIX}-synth{_TAG_SUFFIX}"
+elif _DATASET == "anime":
+    DATA = HERE / "assets/sft_chai_anime.json"
+    OUT_LORA = HERE / f"assets/{BASE_PREFIX}-anime{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/{BASE_PREFIX}-anime{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"{BASE_PREFIX}-anime{_TAG_SUFFIX}"
 else:
     DATA = HERE / "assets/sft_chai_aligned.json"
-    OUT_LORA = HERE / f"assets/qwen25-3b-coser{_TAG_SUFFIX}-lora"
-    OUT_MERGED = HERE / f"assets/qwen25-3b-coser{_TAG_SUFFIX}-merged"
-    SNAPSHOT_PREFIX = f"qwen25-3b-coser{_TAG_SUFFIX}"
-
-BASE = HERE / "assets/Qwen2.5-3B-Instruct"
+    OUT_LORA = HERE / f"assets/{BASE_PREFIX}-coser{_TAG_SUFFIX}-lora"
+    OUT_MERGED = HERE / f"assets/{BASE_PREFIX}-coser{_TAG_SUFFIX}-merged"
+    SNAPSHOT_PREFIX = f"{BASE_PREFIX}-coser{_TAG_SUFFIX}"
 TRAIN_MODEL_DIR = HERE.parent / "train_model"
 
 MAX_SEQ_LEN = 2048

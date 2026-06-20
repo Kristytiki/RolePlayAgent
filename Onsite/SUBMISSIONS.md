@@ -1987,3 +1987,911 @@ Win-rate / preferences are filled in manually after ~90min eval.
 
 ---
 
+## `llama32_3b_anime_v2_step100`  —  2026-06-20 01:28
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_94942_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_94942_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v2-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_v2_step200`  —  2026-06-20 01:28
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_25179_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_25179_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v2-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_v2_step300`  —  2026-06-20 01:28
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_65099_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_65099_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v2-step300`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_v3_gpt_step100`  —  2026-06-20 02:14
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_93952_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_93952_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_v3_gpt_step200`  —  2026-06-20 02:14
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-an_64394_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-an_64394_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `llama32_3b_anime_v3_gpt_step300`  —  2026-06-20 02:14
+
+- **submission_id**: `zheqiwu-llama-3-2-3b-ani_7262_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-llama-3-2-3b-ani_7262_v1
+- **model_repo**: `ZheqiWu/Llama-3.2-3B-Anime-v3-gpt-step300`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n{memory}<|eot_id|>",
+  "prompt_template": "<|start_header_id|>user<|end_header_id|>\n\n{prompt}<|eot_id|>",
+  "bot_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}: {message}<|eot_id|>",
+  "user_template": "<|start_header_id|>user<|end_header_id|>\n\n{user_name}: {message}<|eot_id|>",
+  "response_template": "<|start_header_id|>assistant<|end_header_id|>\n\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step30_long`  —  2026-06-20 02:56
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step30_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step30_v3
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step30`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_long`  —  2026-06-20 02:56
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v3
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step100_long`  —  2026-06-20 02:56
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-s_1701_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_1701_v2
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo32`  —  2026-06-20 02:58
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v4`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v4
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 32,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo64`  —  2026-06-20 02:58
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v5`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v5
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step30_bo32`  —  2026-06-20 02:58
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step30_v4`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step30_v4
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step30`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 32,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo64_long`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v6`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v6
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo64_v2`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v7`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v7
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step100_bo64_long`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-s_1701_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_1701_v3
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo128`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v8`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v8
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 128,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_long_freqpen`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-step60_v9`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-step60_v9
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.3,
+  "stopping_words": [],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 80
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_anime_step60_bo64_tight`  —  2026-06-20 04:21
+
+- **submission_id**: `zheqiwu-qwen3-4b-anime-s_453_v10`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-anime-s_453_v10
+- **model_repo**: `ZheqiWu/Qwen3-4B-Anime-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 0.8,
+  "top_p": 0.9,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_synth_step60`  —  2026-06-20 04:25
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-synt_19065_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-synt_19065_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-synth-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_synth_step60_bo16`  —  2026-06-20 04:25
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-synt_19065_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-synt_19065_v2
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-synth-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_synth_step60_bo32`  —  2026-06-20 04:25
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-synt_19065_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-synt_19065_v3
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-synth-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 32,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_synth_step100_bo16`  —  2026-06-20 04:25
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-synt_62780_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-synt_62780_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-synth-step100`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3b_synth_step200_bo16`  —  2026-06-20 04:25
+
+- **submission_id**: `zheqiwu-qwen2-5-3b-synt_99089_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen2-5-3b-synt_99089_v1
+- **model_repo**: `ZheqiWu/Qwen2.5-3B-synth-step200`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+

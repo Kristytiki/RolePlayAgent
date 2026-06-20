@@ -8,10 +8,10 @@ HERE="$(pwd)"
 LOG="$HERE/sft/auto_v2_pipeline.log"
 
 WF_OUT_DIR="/tmp/claude-22246397/-local-home-zheqi-workspace-RolePlayAgent/c7916a54-fab0-4960-8903-28c841855c4b/tasks"
-B0=woksna2yq
-B1=w7iyp2mt1
-B2=wbkh780cl
-B3=wg56ajm3t
+B0=wtipe883z
+B1=wyu4auey7
+B2=wzl6l9l0w
+B3=wpzzshuyx
 
 HF_TOKEN="${HF_TOKEN:-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}"
 CHAI_DEVELOPER_KEY="${CHAI_DEVELOPER_KEY:-CR_5a47df3092764a8d9dfae7da900291ea}"
@@ -72,28 +72,13 @@ import os
 print(f'file size: {os.path.getsize(out_path)} bytes')
 PY
 
-# 3. Train Llama-3.2-3B on v2 data
+# 3. Train Llama-3.2-3B on v2 data using the dedicated v2 script
+# (weight masking on w=0 turns + 850/150 hold-out + LR 5e-5 + warmup 30 steps)
 echo "$(date) === training Llama-3.2-3B + v2 ===" | tee -a "$LOG"
 cd "$HERE/sft"
 source .venv/bin/activate
 
-# Patch train_llama.py to point at v2 data + new output names
-python3 <<PY
-import re
-p = 'train_llama.py'
-content = open(p).read()
-content = re.sub(r'DATA = HERE / "assets/[^"]*"', 'DATA = HERE / "assets/sft_chai_anime_v2.json"', content)
-content = re.sub(r'OUT_LORA = HERE / "assets/[^"]*"', 'OUT_LORA = HERE / "assets/llama32-3b-anime-v2-lora"', content)
-content = re.sub(r'OUT_MERGED = TRAINED_DIR / "[^"]*"', 'OUT_MERGED = TRAINED_DIR / "llama32-3b-anime-v2-merged"', content)
-content = content.replace('llama32-3b-anime-step{step}', 'llama32-3b-anime-v2-step{step}')
-content = re.sub(r'MAX_STEPS = \d+', 'MAX_STEPS = 300', content)
-content = re.sub(r'SAVE_LORA_EVERY = \d+', 'SAVE_LORA_EVERY = 50', content)
-content = re.sub(r'SNAPSHOT_MERGED_AT = \{[^}]*\}', 'SNAPSHOT_MERGED_AT = {100, 200, 300}', content)
-open(p, 'w').write(content)
-print('train_llama.py patched for v2')
-PY
-
-python train_llama.py 2>&1 | tee train_llama_v2.log
+python train_llama_v2.py 2>&1 | tee train_llama_v2.log
 
 # 4. Upload 3 checkpoints to HF
 echo "$(date) === uploading to HF ===" | tee -a "$LOG"
