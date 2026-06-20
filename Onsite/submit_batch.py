@@ -211,6 +211,25 @@ VARIANTS = [
     ("qwen3b_synth_step200_bo16", "ZheqiWu/Qwen2.5-3B-synth-step200", QWEN_CHATML,
         {"best_of": 16}),
 
+    # Qwen3-4B + PIPPA r=32 60 steps. Higher-capacity base than Qwen2.5-3B for the same data.
+    ("qwen3_4b_pippa_step60",         "ZheqiWu/Qwen3-4B-PIPPA-step60", QWEN_CHATML, {}),
+    ("qwen3_4b_pippa_step60_bo16",    "ZheqiWu/Qwen3-4B-PIPPA-step60", QWEN_CHATML,
+        {"best_of": 16}),
+    ("qwen3_4b_pippa_step60_bo64",    "ZheqiWu/Qwen3-4B-PIPPA-step60", QWEN_CHATML,
+        {"best_of": 64}),
+
+    # Qwen3-4B LoRA ensembles: weight-space merge of anime + pippa + synth LoRAs (all r=32).
+    # Three combination strategies × two best_of settings each.
+    ("qwen3_4b_ens_linear_animeheavy",       "ZheqiWu/Qwen3-4B-ensemble-linear-anime-heavy", QWEN_CHATML, {}),
+    ("qwen3_4b_ens_linear_animeheavy_bo64",  "ZheqiWu/Qwen3-4B-ensemble-linear-anime-heavy", QWEN_CHATML,
+        {"best_of": 64}),
+    ("qwen3_4b_ens_ties_animeheavy",         "ZheqiWu/Qwen3-4B-ensemble-ties-anime-heavy",   QWEN_CHATML, {}),
+    ("qwen3_4b_ens_ties_animeheavy_bo64",    "ZheqiWu/Qwen3-4B-ensemble-ties-anime-heavy",   QWEN_CHATML,
+        {"best_of": 64}),
+    ("qwen3_4b_ens_linear_equal",            "ZheqiWu/Qwen3-4B-ensemble-linear-equal",       QWEN_CHATML, {}),
+    ("qwen3_4b_ens_linear_equal_bo64",       "ZheqiWu/Qwen3-4B-ensemble-linear-equal",       QWEN_CHATML,
+        {"best_of": 64}),
+
     # Llama-3.2-3B SFT-then-DPO smoke run (Strategy B: Opus chosen + base sampled rejected, 500 pairs).
     # Mirrors the meta-llama-llama-3-2-3b_30223_v2 stock submission so we can read the win-rate delta.
     ("llama32_3b_dpo_smoke",

@@ -2895,3 +2895,123 @@ Win-rate / preferences are filled in manually after ~90min eval.
 
 ---
 
+## `qwen3_4b_pippa_step60`  —  2026-06-20 04:54
+
+- **submission_id**: `zheqiwu-qwen3-4b-pippa-step60_v1`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-pippa-step60_v1
+- **model_repo**: `ZheqiWu/Qwen3-4B-PIPPA-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 8,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_pippa_step60_bo16`  —  2026-06-20 04:54
+
+- **submission_id**: `zheqiwu-qwen3-4b-pippa-step60_v2`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-pippa-step60_v2
+- **model_repo**: `ZheqiWu/Qwen3-4B-PIPPA-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 16,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+
+## `qwen3_4b_pippa_step60_bo64`  —  2026-06-20 04:54
+
+- **submission_id**: `zheqiwu-qwen3-4b-pippa-step60_v3`
+- **url**: https://console.chaiverse.com/models/zheqiwu-qwen3-4b-pippa-step60_v3
+- **model_repo**: `ZheqiWu/Qwen3-4B-PIPPA-step60`
+- **platform**: `vllm`
+- **win_rate**: _TBD_
+
+**generation_params**:
+```json
+{
+  "temperature": 1.0,
+  "top_p": 1.0,
+  "min_p": 0.0,
+  "top_k": 40,
+  "presence_penalty": 0.0,
+  "frequency_penalty": 0.0,
+  "stopping_words": [
+    "\n"
+  ],
+  "max_input_tokens": 2048,
+  "best_of": 64,
+  "max_output_tokens": 64
+}
+```
+
+**formatter**:
+```json
+{
+  "memory_template": "<|im_start|>system\n{memory}<|im_end|>\n",
+  "prompt_template": "<|im_start|>user\n{prompt}<|im_end|>\n",
+  "bot_template": "<|im_start|>assistant\n{bot_name}: {message}<|im_end|>\n",
+  "user_template": "<|im_start|>user\n{user_name}: {message}<|im_end|>\n",
+  "response_template": "<|im_start|>assistant\n{bot_name}:",
+  "truncate_by_message": true
+}
+```
+
+---
+

@@ -13,6 +13,7 @@ COMMON_ARGS=(
   LR=1e-4
   MAX_STEPS=60
   SNAPSHOT_AT=60
+  SAVE_LORA_EVERY=30
 )
 
 echo "[1/2] training Qwen3-4B + PIPPA (r=32, lr=1e-4, 60 steps)..."

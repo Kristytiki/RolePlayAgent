@@ -29,7 +29,12 @@ Onsite/dpo/assets/
 Onsite/dpo/unsloth_compiled_cache/
 Onsite/dpo/__pycache__/
 Onsite/dpo/*.log
-Onsite/train_model/
+# Track model metadata + README only; exclude weights / tokenizer
+Onsite/train_model/**/*.safetensors
+Onsite/train_model/**/tokenizer.json
+Onsite/train_model/**/added_tokens.json
+Onsite/train_model/**/special_tokens_map.json
+# legacy (now merged); keep ignored in case it reappears
 Onsite/trained_model/
 
 # Chai API model_info responses include third-party AWS pod env vars; do not commit raw dumps.

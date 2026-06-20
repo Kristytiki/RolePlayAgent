@@ -60,7 +60,7 @@ TRAIN_MODEL_DIR = HERE.parent / "train_model"
 
 MAX_SEQ_LEN = 2048
 MAX_STEPS = int(os.environ.get("MAX_STEPS", "500"))
-SAVE_LORA_EVERY = 100
+SAVE_LORA_EVERY = int(os.environ.get("SAVE_LORA_EVERY", "100"))
 SNAPSHOT_MERGED_AT = {int(s) for s in os.environ.get("SNAPSHOT_AT", "200,500").split(",") if s.strip()}
 
 def load_data():

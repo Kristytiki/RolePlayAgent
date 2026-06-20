@@ -199,6 +199,135 @@ ChatML markers.
 2.44 (step 30) → 1.70 (step 500) while win-rate fell from 27.2% → 25.6%.
 For Chai's preference signal, only `win_ratio` matters.
 
+### 6.4 anime v1 generation — exact prompt and pipeline (best-model recipe)
+
+This is the dataset that produced the strongest single fine-tune
+(`Qwen3-4B-Anime-step60` + `best_of=64` = **36.4% win-rate**). Reproducing
+here in full because it's the load-bearing piece of the result.
+
+**Code:** `Onsite/dpo/assets/anime_gen_workflow.js` — a workflow script that
+fans out 100 subagents (one per character spec). Each subagent is asked to
+emit a single-record ShareGPT JSON. Each call is independently schema-validated,
+and 100/100 succeeded.
+
+**Character pool (100 specs, 3 categories):**
+
+- ~50 **fandom canon characters** with one-line canon descriptions:
+  Asuka Langley, Shinobu Kocho, Sakura Matou, Makima, Ochaco Uraraka, Kafka,
+  Mitsuri Kanroji, Power, Marin Kitagawa, Megumin, Saber, Ram, Senko-san,
+  Mai Sakurajima, Rem, Mikasa Ackerman, Kurapika, Astolfo, Rei Ayanami,
+  Yuno Gasai, March 7th, Raiden Shogun, Komi Shouko, Rin Tohsaka, Bakugo,
+  Hu Tao, Silver Wolf, Yae Miko, Hisoka, Mei Hatsume, Killua, Historia,
+  Power, Mio Akiyama, Nezuko, Bronya, etc.
+- ~30 **anime tropes** parameterized by archetype, with two `(variant 2)`
+  variations each:
+  - tsundere demon lord summoned by accident
+  - oneesan landlady with a hidden possessive streak
+  - yandere childhood friend planning your "wedding" since age 6
+  - kuudere robot maid programmed to serve you
+  - tsundere classmate who keeps insulting you
+  - kuudere swordswoman ghost haunting your inherited katana
+  - dandere library girl who only opens up about books
+  - genki energetic neko-girl streamer with dark backstory
+  - mahou shoujo magical girl in disguise
+  - tomboy childhood rival pro gamer
+  - imouto adopted little sister who is too clingy
+  - shy kitsune shrine maiden with nine hidden tails
+  - ojou-sama heiress slumming at a coffee shop
+  - yakuza heiress hiding at a maid cafe
+  - energetic vampire stuck looking 14 but actually 400yo
+  - …
+- ~20 **dark OC** specs:
+  - vampire mafia capo who kidnapped you to be her blood-source-fiancée
+  - yandere knight liege who will slay all your enemies
+  - cyberpunk netrunner streamer who spliced into your neural ports
+  - corporate yandere CEO who bought your debt
+  - kemonomimi assassin sent to kill you who fell asleep in your bed
+  - eldritch elder god in the form of a tiny pouty cosplayer
+  - …
+
+**Output schema (enforced via JSON-schema):**
+```json
+{
+  "system": "<200-700 char character profile + scenario hook>",
+  "turns": [
+    { "from": "human" | "assistant", "value": "<≤320 chars>" }
+  ]   // 6-10 turns, starting with human
+}
+```
+
+**Per-character prompt (verbatim, sent to Claude Sonnet 4.6 worker):**
+
+```
+You are generating a high-quality role-play SFT conversation for a Chaiverse
+leaderboard model.
+
+Chaiverse users want CUTE, ANIME, FANDOM, OC chatbot vibes — tsundere/yandere/
+kuudere, fandom canon characters, monster-girl/vampire OC. Replies are SAMPLED
+with stop=["\n"] and max_output=64 tokens, so single-line short outputs only.
+
+## YOUR TARGET
+{one of:}
+  FANDOM CHARACTER: <name>
+    Canon: <one-line canon description>
+{or:}
+  ANIME TROPE: <trope spec>
+    Make up an original name fitting this archetype.
+{or:}
+  DARK OC: <spec>
+    Make up an original name and an opening situation.
+
+## OUTPUT SHAPE
+A ShareGPT-style multi-turn conversation:
+- system: 200-700 chars character profile + scenario hook
+  (e.g. "You are X. <traits, voice, scenario>. The scene begins as user...")
+- turns: 6-10 alternating turns, ALWAYS starting with from="human" first turn
+  = "===Conversation Start===" empty bait, OR a scene-setting human action.
+- assistant turns must be SINGLE LINE (no newline character), ≤ ~50 tokens,
+  with *action* asterisks or (action) parens, and the character speaking
+  IN-CHARACTER.
+- assistant turns should NOT prefix with the character name.
+- conversation should escalate naturally — the user pokes/teases/responds,
+  the character replies in voice.
+- VARY turn shapes: some pure dialogue, some pure action, some mix. Use
+  *blushes* (clenches fist) [thinks: ...] sparingly when fitting the persona.
+- AVOID generic openers like "Hello!" — pick something character-specific.
+- AVOID AI-assistant disclaimers, NO breaking the fourth wall.
+- Tone: cute, possessive, teasing, dark/dramatic — match the persona.
+  Light NSFW innuendo is FINE for adult RP characters but no explicit sex.
+
+Return ONLY the JSON object with system + turns. No prose, no markdown.
+```
+
+**Pipeline:**
+1. `SPECS` — 100 records hand-curated (50 fandom + 30 trope + 20 dark OC, with two `variant 2` rotations of each trope/OC for diversity).
+2. `pipeline(SPECS, gen_one_with_schema)` — fans out 100 concurrent Sonnet 4.6 calls, each constrained by the JSON schema above.
+3. Output validated → drop failures → save as `Onsite/sft/assets/sft_chai_anime.json` (100 records, 173 KB).
+
+**Why this prompt works:**
+
+- Tells the generator the **exact downstream constraint** (`stop=["\n"]`,
+  `max_output=64`) so it self-imposes single-line short outputs at generation
+  time, instead of needing aggressive preprocessing later.
+- Restricts the **distribution to Chai's actual user taste** (anime / fandom /
+  OC, tsundere/yandere/kuudere) — no philosophy, no advice, no discussion.
+- Forces the assistant turn to **omit the character-name prefix** (Chai's
+  bot_template already supplies it), avoiding the double-prefix bug.
+- Asks for **persona-specific scenario hooks** instead of generic "Hello!"
+  openers, so each conversation looks like a different roleplay setting.
+
+**Training recipe (best:** `Qwen3-4B-Anime-step60`):
+
+```bash
+cd Onsite/sft && source .venv/bin/activate
+DATASET=anime BASE_MODEL=qwen3-4b LORA_R=32 LORA_ALPHA=64 LR=1e-4 \
+    MAX_STEPS=60 SNAPSHOT_AT=30,60 \
+    python train.py
+```
+
+Everything else is the universal SFT setup from §6: bf16, 4-bit base,
+batch=2, grad-accum=4, cosine LR, `train_on_responses_only` ChatML masking.
+
 ---
 
 ## 7. Dim E — LoRA ensemble (weight-space averaging)
